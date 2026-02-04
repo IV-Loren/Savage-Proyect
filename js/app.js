@@ -7,6 +7,9 @@ let handtraps = [];
 let currentDeck = null;
 let filteredDecks = [];
 
+// Tiers que se mostrarán en análisis y meta view
+const COMPETITIVE_TIERS = ['Tier 1', 'Tier 2', 'Tier 3'];
+const ALL_TIERS = ['Tier 1', 'Tier 2', 'Tier 3', 'rogue', 'fun'];
 
 // Cargar datos al inicio
 document.addEventListener('DOMContentLoaded', async function() {
@@ -146,6 +149,8 @@ function loadSidebar() {
                     <option value="1">Tier 1</option>
                     <option value="2">Tier 2</option>
                     <option value="3">Tier 3</option>
+                    <option value="rogue">Rogue</option>
+                    <option value="fun">Fun</option>
                 </select>
             </div>
             
@@ -193,8 +198,7 @@ function loadMenuDecks() {
 
 // Crear tarjeta de deck
 function createDeckCard(deckName, deck, context = 'menu') {
-    const tierClass = deck.tier === 'Tier 1' ? 'tier-1' : 
-                     deck.tier === 'Tier 2' ? 'tier-2' : 'tier-3';
+    const tierClass = getTierClass(deck.tier);
     const extra = additional[deckName] || {};
     
     const deckCard = document.createElement('div');
@@ -243,7 +247,42 @@ function createDeckCard(deckName, deck, context = 'menu') {
     return deckCard;
 }
 
-// Búsqueda simple
+// Obtener clase CSS para el tier
+function getTierClass(tier) {
+    switch(tier) {
+        case 'Tier 1': return 'tier-1';
+        case 'Tier 2': return 'tier-2';
+        case 'Tier 3': return 'tier-3';
+        case 'rogue': return 'tier-rogue';
+        case 'fun': return 'tier-fun';
+        default: return 'tier-3';
+    }
+}
+
+// Obtener color para el tier
+function getTierColor(tier) {
+    switch(tier) {
+        case 'Tier 1': return '#70d870';
+        case 'Tier 2': return '#d8d870';
+        case 'Tier 3': return '#d87070';
+        case 'rogue': return '#808080';
+        case 'fun': return '#8a2be2';
+        default: return '#d87070';
+    }
+}
+
+// Obtener descripción del tier
+function getTierDescription(tier) {
+    const descriptions = {
+        'Tier 1': 'Deck top del formato, altamente competitivo',
+        'Tier 2': 'Deck competitivo pero con algunas debilidades',
+        'Tier 3': 'Deck viable pero no óptimo para torneos grandes',
+        'rogue': 'Deck que puede sorprender en torneos locales',
+        'fun': 'Deck para jugar casualmente y divertirse'
+    };
+    return descriptions[tier] || 'Deck casual';
+}
+
 // Búsqueda simple - Versión Visual Simplificada
 function searchSimpleDeck() {
     const input = document.getElementById('simple-search-input').value.trim();
@@ -262,13 +301,12 @@ function searchSimpleDeck() {
     
     // Calcular score visual
     const avgGoing = (going.first + going.second) / 2;
-    const tierScore = deck.tier === 'Tier 1' ? 85 : deck.tier === 'Tier 2' ? 70 : 55;
+    const tierScore = getTierScore(deck.tier);
     const difficultyScore = 100 - (deck.difficulty * 7);
     const visualScore = Math.round((avgGoing * 15) + tierScore + difficultyScore) / 3;
     
     // Color del tier
-    const tierColor = deck.tier === 'Tier 1' ? '#70d870' : 
-                     deck.tier === 'Tier 2' ? '#d8d870' : '#d87070';
+    const tierColor = getTierColor(deck.tier);
     
     // Ruta de imagen
     const imagePath = deck.image ? `assets/images/decks/${deck.image}` : 'assets/images/decks/default.jpg';
@@ -393,13 +431,13 @@ function searchSimpleDeck() {
             <div class="info-section">
                 <h4><i class="fas fa-balance-scale"></i> Comparación Rápida</h4>
                 <div class="visual-list">
-                    <div class="visual-item ${deck.tier === 'Tier 1' ? 'good' : deck.tier === 'Tier 2' ? 'neutral' : 'bad'}">
-                        <i class="fas ${deck.tier === 'Tier 1' ? 'fa-chevron-up' : deck.tier === 'Tier 2' ? 'fa-equals' : 'fa-chevron-down'}"></i>
+                    <div class="visual-item ${deck.tier === 'Tier 1' ? 'good' : deck.tier === 'Tier 2' ? 'neutral' : deck.tier === 'rogue' || deck.tier === 'fun' ? 'bad' : 'neutral'}">
+                        <i class="fas ${deck.tier === 'Tier 1' ? 'fa-chevron-up' : deck.tier === 'Tier 2' ? 'fa-equals' : deck.tier === 'rogue' || deck.tier === 'fun' ? 'fa-chevron-down' : 'fa-equals'}"></i>
                         <div style="flex: 1;">
                             <strong>Posición en el Meta:</strong> ${deck.tier}
                         </div>
                         <span class="simple-tag" style="background-color: ${tierColor}; color: white; font-size: 0.7rem;">
-                            ${deck.tier === 'Tier 1' ? 'TOP' : deck.tier === 'Tier 2' ? 'MEDIO' : 'BAJO'}
+                            ${deck.tier === 'Tier 1' ? 'TOP' : deck.tier === 'Tier 2' ? 'MEDIO' : deck.tier === 'rogue' ? 'ROGUE' : deck.tier === 'fun' ? 'FUN' : 'BAJO'}
                         </span>
                     </div>
                     
@@ -451,11 +489,22 @@ function searchSimpleDeck() {
     }, 300);
 }
 
+// Obtener score del tier
+function getTierScore(tier) {
+    switch(tier) {
+        case 'Tier 1': return 85;
+        case 'Tier 2': return 70;
+        case 'Tier 3': return 55;
+        case 'rogue': return 40;
+        case 'fun': return 25;
+        default: return 50;
+    }
+}
+
 // Función auxiliar para recomendación simple
 function getSimpleRecommendation(tier, avgGoing, difficulty) {
-    const score = (tier === 'Tier 1' ? 3 : tier === 'Tier 2' ? 2 : 1) + 
-                 (avgGoing * 0.6) + 
-                 ((10 - difficulty) * 0.1);
+    const tierValue = getTierScore(tier) / 25;
+    const score = tierValue + (avgGoing * 0.6) + ((10 - difficulty) * 0.1);
     
     if (score >= 4) {
         return '🎯 Deck altamente recomendado para jugadores competitivos';
@@ -464,7 +513,7 @@ function getSimpleRecommendation(tier, avgGoing, difficulty) {
     } else if (score >= 1.5) {
         return '🤔 Deck viable, recomendado para jugadores que conocen el arquetipo';
     } else {
-        return '⚠️ Deck de nicho, recomendado solo para expertos en el arquetipo';
+        return '🎮 Deck casual, perfecto para divertirse y jugar partidas amistosas';
     }
 }
 
@@ -489,7 +538,6 @@ function searchCompleteDeck(deckNameInput = null) {
     renderDeckComplete(currentDeck);
 }
 
-// Renderizar vista completa
 // Renderizar vista completa (Versión Profesional)
 function renderDeckComplete(deckName) {
     const deck = decks[deckName];
@@ -503,8 +551,7 @@ function renderDeckComplete(deckName) {
     const imagePath = deck.image ? `assets/images/decks/${deck.image}` : 'assets/images/decks/default.jpg';
     
     // Determinar color del tier
-    const tierColor = deck.tier === 'Tier 1' ? '#70d870' : 
-                     deck.tier === 'Tier 2' ? '#d8d870' : '#d87070';
+    const tierColor = getTierColor(deck.tier);
     
     // Determinar dificultad color
     const difficultyColor = deck.difficulty <= 3 ? '#70d870' :
@@ -584,7 +631,7 @@ function renderDeckComplete(deckName) {
             
             <div class="visual-comparison">
                 <div class="comparison-bar">
-                    <div class="comparison-label">Matchup vs Tier 1:</div>
+                    <div class="comparison-label">Performance General:</div>
                     <div class="comparison-visual">
                         <div class="comparison-fill bar-green" style="width: ${(going.first + going.second) * 10}%"></div>
                     </div>
@@ -780,13 +827,13 @@ function renderDeckComplete(deckName) {
         content += `</div></div>`;
     }
     
-    // SECCIÓN 6: RESUMEN DEL META
+    // SECCIÓN 6: RESUMEN DEL DECK
     content += `
         <div class="detail-section">
-            <h4><i class="fas fa-chart-pie"></i> Resumen del Meta</h4>
+            <h4><i class="fas fa-chart-pie"></i> Resumen del Deck</h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                 <div class="stat-box">
-                    <div class="stat-label">Posición en el Meta</div>
+                    <div class="stat-label">Posición</div>
                     <div class="stat-value" style="color: ${tierColor};">${deck.tier}</div>
                     <div class="stat-desc">${getTierDescription(deck.tier)}</div>
                 </div>
@@ -804,7 +851,7 @@ function renderDeckComplete(deckName) {
                     <div class="stat-value" style="font-size: 1.5rem;">
                         ${getRecommendation(deck.tier, avgRating)}
                     </div>
-                    <div class="stat-desc">Basado en análisis actual</div>
+                    <div class="stat-desc">Basado en análisis del deck</div>
                 </div>
             </div>
             
@@ -813,7 +860,7 @@ function renderDeckComplete(deckName) {
                     <i class="fas fa-info-circle"></i> Análisis del Deck
                 </h5>
                 <p style="color: var(--text-primary); line-height: 1.6;">
-                    ${extra.analysis || 'Este deck presenta un balance sólido entre potencia y consistencia. Su principal fortaleza radica en la capacidad de adaptarse a diferentes situaciones de juego.'}
+                    ${extra.analysis || 'Este deck presenta características únicas según su categoría.'}
                 </p>
             </div>
         </div>
@@ -881,35 +928,32 @@ function getStatDescription(stat, value) {
     return descriptions[stat] || 'Performance estándar';
 }
 
-function getTierDescription(tier) {
-    const descriptions = {
-        'Tier 1': 'Deck top del formato, altamente competitivo',
-        'Tier 2': 'Deck competitivo pero con algunas debilidades',
-        'Tier 3': 'Deck viable pero no óptimo para torneos grandes'
-    };
-    return descriptions[tier] || 'Deck casual';
-}
-
 function getRecommendation(tier, rating) {
     if (tier === 'Tier 1' && rating >= 4) return '⭐⭐⭐⭐⭐';
     if (tier === 'Tier 1' || (tier === 'Tier 2' && rating >= 3.5)) return '⭐⭐⭐⭐';
-    if (tier === 'Tier 2') return '⭐⭐⭐';
-    if (rating >= 3) return '⭐⭐';
+    if (tier === 'Tier 2' || tier === 'rogue') return '⭐⭐⭐';
+    if (rating >= 3 || tier === 'fun') return '⭐⭐';
     return '⭐';
 }
 
-// Cargar tabla del meta
+// Cargar tabla del meta (SOLO TIERS COMPETITIVOS)
 function loadMetaTable(sortByTier = false) {
     const tbody = document.getElementById('meta-table-body');
     const tierFilter = document.getElementById('meta-tier-filter').value;
     
-    // Filtrar decks
-    let deckList = Object.entries(decks);
+    // Filtrar decks - SOLO TIERS COMPETITIVOS
+    let deckList = Object.entries(decks).filter(([name, data]) => 
+        COMPETITIVE_TIERS.includes(data.tier)
+    );
     
     if (tierFilter !== 'all') {
-        deckList = deckList.filter(([name, data]) => 
-            data.tier.includes(`Tier ${tierFilter}`)
-        );
+        if (tierFilter === 'rogue' || tierFilter === 'fun') {
+            deckList = [];
+        } else {
+            deckList = deckList.filter(([name, data]) => 
+                data.tier.includes(`Tier ${tierFilter}`)
+            );
+        }
     }
     
     // Ordenar
@@ -924,13 +968,25 @@ function loadMetaTable(sortByTier = false) {
     
     tbody.innerHTML = '';
     
+    if (deckList.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                    <i class="fas fa-info-circle"></i>
+                    <p>No hay decks competitivos con este filtro</p>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
     deckList.forEach(([name, data]) => {
         const primaryWeakness = data.weaknesses?.[0] || "Ninguna";
         const row = document.createElement('tr');
         row.innerHTML = `
             <td><strong>${name}</strong></td>
             <td>
-                <span class="deck-tier ${data.tier === 'Tier 1' ? 'tier-1' : data.tier === 'Tier 2' ? 'tier-2' : 'tier-3'}">
+                <span class="deck-tier ${getTierClass(data.tier)}">
                     ${data.tier}
                 </span>
             </td>
@@ -1017,28 +1073,56 @@ function loadHandtrapsTierList() {
     });
 }
 
-// Cargar meta análisis profesional
+// Cargar meta análisis profesional (SOLO TIERS COMPETITIVOS)
 function loadMetaAnalysis() {
-    const totalDecks = Object.keys(decks).length;
+    // Filtrar solo decks competitivos
+    const competitiveDecks = Object.entries(decks).filter(([name, deck]) => 
+        COMPETITIVE_TIERS.includes(deck.tier)
+    );
+    
+    const totalDecks = competitiveDecks.length;
     
     // Actualizar contadores del header
     document.getElementById('total-decks-count').textContent = totalDecks;
     
-    // Calcular diversidad del meta (nuevo cálculo)
+    if (totalDecks === 0) {
+        document.getElementById('meta-diversity').textContent = '0%';
+        document.getElementById('avg-difficulty').textContent = '0/10';
+        document.getElementById('dominant-tier').textContent = '-';
+        
+        // Mostrar mensaje de no hay datos
+        document.getElementById('tier-distribution-pro').innerHTML = `
+            <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                <i class="fas fa-chart-pie"></i>
+                <p>No hay datos de decks competitivos para análisis</p>
+            </div>
+        `;
+        
+        document.getElementById('top-decks-meta').querySelector('.analysis-list').innerHTML = `
+            <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-info-circle"></i>
+                <p>No hay decks competitivos para mostrar</p>
+            </div>
+        `;
+        
+        return;
+    }
+    
+    // Calcular diversidad del meta
     const deckTypes = {};
-    Object.values(decks).forEach(deck => {
+    competitiveDecks.forEach(([name, deck]) => {
         deckTypes[deck.type] = (deckTypes[deck.type] || 0) + 1;
     });
     const typeDiversity = Math.min(Object.keys(deckTypes).length * 25, 100);
     document.getElementById('meta-diversity').textContent = `${typeDiversity}%`;
     
     // Calcular dificultad promedio
-    const totalDifficulty = Object.values(decks).reduce((sum, deck) => sum + deck.difficulty, 0);
+    const totalDifficulty = competitiveDecks.reduce((sum, [name, deck]) => sum + deck.difficulty, 0);
     const avgDifficulty = (totalDifficulty / totalDecks).toFixed(1);
     document.getElementById('avg-difficulty').textContent = `${avgDifficulty}/10`;
     
     // Calcular tier dominante
-    const tierCounts = calculateTierDistribution();
+    const tierCounts = calculateTierDistribution(competitiveDecks);
     const dominantTier = Object.entries(tierCounts).reduce((a, b) => a[1] > b[1] ? a : b)[0];
     document.getElementById('dominant-tier').textContent = dominantTier.replace('Tier ', 'T');
     
@@ -1047,43 +1131,43 @@ function loadMetaAnalysis() {
     document.getElementById('tier-distribution-pro').innerHTML = tierDistributionHTML;
     
     // Top 5 Decks del Meta
-    const topDecks = calculateTopDecks();
+    const topDecks = calculateTopDecks(competitiveDecks);
     renderTopDecks(topDecks);
     
     // Matchups Clave
-    const keyMatchups = generateKeyMatchups();
+    const keyMatchups = generateKeyMatchups(competitiveDecks);
     renderKeyMatchups(keyMatchups);
     
     // Distribución por Tipo
     renderTypeDistribution(deckTypes);
     
     // Análisis de Debilidades
-    const weaknesses = analyzeCommonWeaknesses();
+    const weaknesses = analyzeCommonWeaknesses(competitiveDecks);
     renderWeaknessAnalysis(weaknesses);
     
     // Performance por Tipo
-    const performanceStats = calculatePerformanceByType();
+    const performanceStats = calculatePerformanceByType(competitiveDecks);
     renderPerformanceStats(performanceStats);
     
     // Side Deck del Meta
     renderMetaSideDeck();
     
     // Estadísticas Generales
-    renderGeneralStats();
+    renderGeneralStats(competitiveDecks);
     
     // Animar elementos
     animateElements();
 }
 
-// Funciones auxiliares específicas para cada sección
-function calculateTierDistribution() {
+// Funciones auxiliares específicas para cada sección (SOLO COMPETITIVO)
+function calculateTierDistribution(competitiveDecks) {
     const tierCounts = {
         'Tier 1': 0,
         'Tier 2': 0,
         'Tier 3': 0
     };
     
-    Object.values(decks).forEach(deck => {
+    competitiveDecks.forEach(([name, deck]) => {
         if (tierCounts[deck.tier] !== undefined) {
             tierCounts[deck.tier]++;
         }
@@ -1134,9 +1218,8 @@ function generateTierDistributionHTML(tierCounts, totalDecks) {
     `;
 }
 
-function calculateTopDecks() {
-    const deckScores = Object.keys(decks).map(deckName => {
-        const deck = decks[deckName];
+function calculateTopDecks(competitiveDecks) {
+    const deckScores = competitiveDecks.map(([deckName, deck]) => {
         const extra = additional[deckName] || {};
         const going = extra.going || {first: 3, second: 3};
         const score = calculateDeckScore(deck, going);
@@ -1148,17 +1231,26 @@ function calculateTopDecks() {
 
 function renderTopDecks(topDecks) {
     const topTierCount = topDecks.filter(d => d.deck.tier === 'Tier 1').length;
-    const avgScore = Math.round(topDecks.reduce((sum, d) => sum + d.score, 0) / topDecks.length);
+    const avgScore = topDecks.length > 0 ? Math.round(topDecks.reduce((sum, d) => sum + d.score, 0) / topDecks.length) : 0;
     
     document.getElementById('top-tier-count').textContent = topTierCount;
     document.getElementById('avg-win-rate').textContent = `${avgScore}%`;
     
-    document.getElementById('top-decks-meta').querySelector('.analysis-list').innerHTML = `
+    const topDecksList = document.getElementById('top-decks-meta').querySelector('.analysis-list');
+    if (topDecks.length === 0) {
+        topDecksList.innerHTML = `
+            <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-info-circle"></i>
+                <p>No hay decks competitivos para mostrar</p>
+            </div>
+        `;
+        return;
+    }
+    
+    topDecksList.innerHTML = `
         ${topDecks.map((item, index) => {
-            const tierClass = item.deck.tier === 'Tier 1' ? 'tier-1' : 
-                            item.deck.tier === 'Tier 2' ? 'tier-2' : 'tier-3';
-            const tierColor = item.deck.tier === 'Tier 1' ? '#70d870' : 
-                            item.deck.tier === 'Tier 2' ? '#d8d870' : '#d87070';
+            const tierClass = getTierClass(item.deck.tier);
+            const tierColor = getTierColor(item.deck.tier);
             
             return `
                 <li>
@@ -1177,12 +1269,11 @@ function renderTopDecks(topDecks) {
     `;
 }
 
-function generateKeyMatchups() {
-    const deckNames = Object.keys(decks);
-    if (deckNames.length < 3) return [];
+function generateKeyMatchups(competitiveDecks) {
+    if (competitiveDecks.length < 3) return [];
     
     // Seleccionar los mejores decks para matchups interesantes
-    const topDeckNames = deckNames.slice(0, 3);
+    const topDeckNames = competitiveDecks.slice(0, 3).map(([name]) => name);
     
     return [
         {
@@ -1214,7 +1305,7 @@ function renderKeyMatchups(matchups) {
         document.getElementById('key-matchups').querySelector('.matchup-matrix').innerHTML = `
             <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
                 <i class="fas fa-info-circle"></i>
-                <p>Se necesitan más decks para generar matchups</p>
+                <p>Se necesitan más decks competitivos para generar matchups</p>
             </div>
         `;
         return;
@@ -1244,6 +1335,16 @@ function renderTypeDistribution(deckTypes) {
     };
     
     const total = Object.values(deckTypes).reduce((a, b) => a + b, 0);
+    if (total === 0) {
+        document.getElementById('type-distribution').innerHTML = `
+            <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-chart-pie"></i>
+                <p>No hay datos para mostrar</p>
+            </div>
+        `;
+        return;
+    }
+    
     let cumulative = 0;
     
     // Generar gráfico de torta
@@ -1291,9 +1392,9 @@ function renderTypeDistribution(deckTypes) {
     `;
 }
 
-function analyzeCommonWeaknesses() {
+function analyzeCommonWeaknesses(competitiveDecks) {
     const weaknesses = {};
-    Object.values(decks).forEach(deck => {
+    competitiveDecks.forEach(([name, deck]) => {
         deck.weaknesses?.forEach(weakness => {
             weaknesses[weakness] = (weaknesses[weakness] || 0) + 1;
         });
@@ -1327,7 +1428,7 @@ function renderWeaknessAnalysis(weaknesses) {
     `;
 }
 
-function calculatePerformanceByType() {
+function calculatePerformanceByType(competitiveDecks) {
     const typeScores = {
         'Combo': [],
         'Control': [],
@@ -1335,8 +1436,7 @@ function calculatePerformanceByType() {
         'Mid-Range': []
     };
     
-    Object.keys(decks).forEach(deckName => {
-        const deck = decks[deckName];
+    competitiveDecks.forEach(([deckName, deck]) => {
         const extra = additional[deckName] || {};
         const going = extra.going || {first: 3, second: 3};
         const score = calculateDeckScore(deck, going);
@@ -1361,12 +1461,22 @@ function calculatePerformanceByType() {
 }
 
 function renderPerformanceStats(performanceStats) {
-    document.getElementById('combo-performance').textContent = `${performanceStats.combo}%`;
-    document.getElementById('control-performance').textContent = `${performanceStats.control}%`;
-    document.getElementById('aggro-performance').textContent = `${performanceStats.aggro}%`;
+    document.getElementById('combo-performance').textContent = `${performanceStats.combo || 0}%`;
+    document.getElementById('control-performance').textContent = `${performanceStats.control || 0}%`;
+    document.getElementById('aggro-performance').textContent = `${performanceStats.aggro || 0}%`;
     
     // Crear gráfico de barras simple
-    const maxValue = Math.max(...Object.values(performanceStats));
+    const maxValue = Math.max(...Object.values(performanceStats).filter(v => v > 0));
+    if (maxValue <= 0) {
+        document.getElementById('performance-chart').innerHTML = `
+            <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-chart-bar"></i>
+                <p>No hay datos de performance</p>
+            </div>
+        `;
+        return;
+    }
+    
     const chartHTML = Object.entries(performanceStats).map(([type, value]) => {
         const height = (value / maxValue) * 100;
         const colors = {
@@ -1428,13 +1538,20 @@ function renderMetaSideDeck() {
     `;
 }
 
-function renderGeneralStats() {
+function renderGeneralStats(competitiveDecks) {
+    if (competitiveDecks.length === 0) {
+        document.getElementById('avg-going-first').textContent = '0/5';
+        document.getElementById('avg-going-second').textContent = '0/5';
+        document.getElementById('most-common-type').textContent = '-';
+        return;
+    }
+    
     // Calcular estadísticas generales
     let totalGoingFirst = 0;
     let totalGoingSecond = 0;
     let goingCount = 0;
     
-    Object.keys(decks).forEach(deckName => {
+    competitiveDecks.forEach(([deckName, deck]) => {
         const extra = additional[deckName] || {};
         const going = extra.going;
         if (going) {
@@ -1449,7 +1566,7 @@ function renderGeneralStats() {
     
     // Tipo más común
     const typeCounts = {};
-    Object.values(decks).forEach(deck => {
+    competitiveDecks.forEach(([name, deck]) => {
         typeCounts[deck.type] = (typeCounts[deck.type] || 0) + 1;
     });
     
@@ -1461,7 +1578,7 @@ function renderGeneralStats() {
 }
 
 function calculateDeckScore(deck, going) {
-    const tierScore = deck.tier === 'Tier 1' ? 85 : deck.tier === 'Tier 2' ? 70 : 55;
+    const tierScore = getTierScore(deck.tier);
     const difficultyScore = 100 - (deck.difficulty * 7);
     const goingScore = ((going.first + going.second) / 2) * 15;
     return Math.round((tierScore + difficultyScore + goingScore) / 3);
@@ -1488,7 +1605,7 @@ function animateElements() {
     }, 300);
 }
 
-// Aplicar filtros
+// Aplicar filtros (INCLUYE ROGUE Y FUN)
 function applyFilters() {
     const tierFilter = document.getElementById('tier-filter').value;
     const typeFilter = document.getElementById('type-filter').value;
@@ -1497,8 +1614,12 @@ function applyFilters() {
         const deck = decks[deckName];
         
         // Filtrar por tier
-        if (tierFilter !== 'all' && !deck.tier.includes(`Tier ${tierFilter}`)) {
-            return false;
+        if (tierFilter !== 'all') {
+            if (tierFilter === 'rogue' || tierFilter === 'fun') {
+                if (deck.tier !== tierFilter) return false;
+            } else if (!deck.tier.includes(`Tier ${tierFilter}`)) {
+                return false;
+            }
         }
         
         // Filtrar por tipo
@@ -1512,7 +1633,7 @@ function applyFilters() {
     loadMenuDecks();
 }
 
-// Actualizar comparador
+// Actualizar comparador (INCLUYE ROGUE Y FUN)
 function updateComparator() {
     const deck1Name = document.getElementById('deck1-search').value.trim();
     const deck2Name = document.getElementById('deck2-search').value.trim();
@@ -1570,7 +1691,7 @@ function updateComparator() {
     }
 }
 
-// Renderizar información del deck para comparador - Versión Profesional (NUEVA FUNCIÓN)
+// Renderizar información del deck para comparador - Versión Profesional
 function renderDeckComparatorInfo(deckName, deck, extra) {
     const going = extra.going || {first: 3, second: 3};
     const stats = extra.stats || {};
@@ -1578,14 +1699,13 @@ function renderDeckComparatorInfo(deckName, deck, extra) {
     const avgGoing = (going.first + going.second) / 2;
     
     // Calcular score visual
-    const tierScore = deck.tier === 'Tier 1' ? 85 : deck.tier === 'Tier 2' ? 70 : 55;
+    const tierScore = getTierScore(deck.tier);
     const difficultyScore = 100 - (deck.difficulty * 7);
     const goingScore = avgGoing * 15;
     const visualScore = Math.round((goingScore + tierScore + difficultyScore) / 3);
     
     // Color del tier
-    const tierColor = deck.tier === 'Tier 1' ? '#70d870' : 
-                     deck.tier === 'Tier 2' ? '#d8d870' : '#d87070';
+    const tierColor = getTierColor(deck.tier);
     
     return `
         <div class="comparator-deck-info">
@@ -1665,7 +1785,7 @@ function renderDeckComparatorInfo(deckName, deck, extra) {
     `;
 }
 
-// Crear resultado de comparación profesional (NUEVA FUNCIÓN)
+// Crear resultado de comparación profesional (INCLUYE ROGUE Y FUN)
 function createProfessionalComparisonResult(deck1Name, deck2Name, deck1, deck2) {
     const matchup1 = matchups[deck1Name] || {side_in: []};
     const matchup2 = matchups[deck2Name] || {side_in: []};
@@ -1718,15 +1838,15 @@ function createProfessionalComparisonResult(deck1Name, deck2Name, deck1, deck2) 
                         <div class="tactics-column">
                             <h5>${deck1Name}</h5>
                             <ul class="tactics-list">
-                                <li><i class="fas fa-lightbulb"></i> ${advantage.tactics.deck1 || 'Juega agresivo en turno 1'}</li>
-                                <li><i class="fas fa-shield-alt"></i> ${advantage.tactics.deck1Defense || 'Protege tu tablero principal'}</li>
+                                <li><i class="fas fa-lightbulb"></i> ${advantage.tactics.deck1 || 'Juega según tu estilo'}</li>
+                                <li><i class="fas fa-shield-alt"></i> ${advantage.tactics.deck1Defense || 'Aprovecha tus fortalezas'}</li>
                             </ul>
                         </div>
                         <div class="tactics-column">
                             <h5>${deck2Name}</h5>
                             <ul class="tactics-list">
-                                <li><i class="fas fa-lightbulb"></i> ${advantage.tactics.deck2 || 'Juega conservador en turno 2'}</li>
-                                <li><i class="fas fa-shield-alt"></i> ${advantage.tactics.deck2Defense || 'Prepara interrupciones'}</li>
+                                <li><i class="fas fa-lightbulb"></i> ${advantage.tactics.deck2 || 'Adapta tu estrategia'}</li>
+                                <li><i class="fas fa-shield-alt"></i> ${advantage.tactics.deck2Defense || 'Explota sus debilidades'}</li>
                             </ul>
                         </div>
                     </div>
@@ -1799,7 +1919,7 @@ function createProfessionalComparisonResult(deck1Name, deck2Name, deck1, deck2) 
     `;
 }
 
-// Renderizar comparación por categorías (NUEVA FUNCIÓN)
+// Renderizar comparación por categorías
 function renderCategoryComparison(deck1Name, deck2Name, deck1, deck2, extra1, extra2) {
     const stats1 = extra1.stats || {};
     const stats2 = extra2.stats || {};
@@ -1807,8 +1927,8 @@ function renderCategoryComparison(deck1Name, deck2Name, deck1, deck2, extra1, ex
     const going2 = extra2.going || {first: 3, second: 3};
     
     const categories = [
-        {key: 'tier', label: 'Posición Meta', icon: 'fa-trophy', 
-         value1: deck1.tier, value2: deck2.tier, isBetter: (a, b) => a === 'Tier 1' || (a === 'Tier 2' && b === 'Tier 3')},
+        {key: 'tier', label: 'Posición', icon: 'fa-trophy', 
+         value1: deck1.tier, value2: deck2.tier, isBetter: (a, b) => getTierScore(a) > getTierScore(b)},
         {key: 'difficulty', label: 'Dificultad', icon: 'fa-brain', 
          value1: deck1.difficulty, value2: deck2.difficulty, isBetter: (a, b) => a < b, reverse: true},
         {key: 'consistency', label: 'Consistencia', icon: 'fa-chart-line',
@@ -1825,6 +1945,19 @@ function renderCategoryComparison(deck1Name, deck2Name, deck1, deck2, extra1, ex
         const isBetter1 = cat.isBetter(cat.value1, cat.value2);
         const isBetter2 = cat.isBetter(cat.value2, cat.value1);
         
+        // Calcular valores para la barra
+        let width1, width2;
+        if (cat.key === 'tier') {
+            width1 = (getTierScore(cat.value1) / 100) * 100;
+            width2 = (getTierScore(cat.value2) / 100) * 100;
+        } else if (cat.key.includes('going')) {
+            width1 = (cat.value1 / 5) * 100;
+            width2 = (cat.value2 / 5) * 100;
+        } else {
+            width1 = (cat.value1 / 10) * 100;
+            width2 = (cat.value2 / 10) * 100;
+        }
+        
         return `
             <div class="category-item">
                 <div class="category-header">
@@ -1835,17 +1968,13 @@ function renderCategoryComparison(deck1Name, deck2Name, deck1, deck2, extra1, ex
                     <div class="category-value ${isBetter1 ? 'better' : ''}">
                         <span class="value-text">${cat.value1}${cat.key === 'tier' ? '' : ''}</span>
                         <div class="value-bar">
-                            <div class="value-fill deck1" style="width: ${cat.key === 'tier' 
-                                ? (cat.value1 === 'Tier 1' ? 100 : cat.value1 === 'Tier 2' ? 66 : 33)
-                                : (cat.value1 / (cat.key.includes('going') ? 5 : 10)) * 100}%"></div>
+                            <div class="value-fill deck1" style="width: ${width1}%"></div>
                         </div>
                     </div>
                     <div class="category-value ${isBetter2 ? 'better' : ''}">
                         <span class="value-text">${cat.value2}${cat.key === 'tier' ? '' : ''}</span>
                         <div class="value-bar">
-                            <div class="value-fill deck2" style="width: ${cat.key === 'tier' 
-                                ? (cat.value2 === 'Tier 1' ? 100 : cat.value2 === 'Tier 2' ? 66 : 33)
-                                : (cat.value2 / (cat.key.includes('going') ? 5 : 10)) * 100}%"></div>
+                            <div class="value-fill deck2" style="width: ${width2}%"></div>
                         </div>
                     </div>
                 </div>
@@ -1859,7 +1988,7 @@ function renderCategoryComparison(deck1Name, deck2Name, deck1, deck2, extra1, ex
     }).join('');
 }
 
-// Obtener ventaja profesional del matchup (NUEVA FUNCIÓN)
+// Obtener ventaja profesional del matchup
 function getProfessionalDeckAdvantage(deck1Name, deck2Name, deck1, deck2, going1, going2) {
     // Calcular scores
     const score1 = calculateDeckScore(deck1, going1);
@@ -1869,28 +1998,28 @@ function getProfessionalDeckAdvantage(deck1Name, deck2Name, deck1, deck2, going1
     const diff = Math.abs(score1 - score2);
     let advantage = 'even';
     let advantageText = 'Matchup Equilibrado';
-    let reason = 'Ambos decks tienen características similares en el meta actual';
+    let reason = 'Ambos decks tienen características similares';
     let vsText = 'EMPATE';
     let vsClass = 'summary-even';
     let vsIcon = 'fa-equals';
     let summaryIcon = 'fa-balance-scale';
     let summaryTitle = 'Matchup Equilibrado';
-    let summaryDescription = 'Este matchup está bastante igualado. La victoria dependerá más de la habilidad del jugador y las manos iniciales que de una ventaja inherente del deck.';
+    let summaryDescription = 'Este matchup está bastante igualado. La victoria dependerá más de la habilidad del jugador y las manos iniciales.';
     
     if (score1 > score2 + 10) {
         advantage = deck1Name;
         advantageText = `${deck1Name} tiene ventaja`;
-        reason = 'Superioridad en tier y mejor performance general';
+        reason = 'Superioridad en características generales';
         vsText = `${deck1Name} FAVORITO`;
         vsClass = 'summary-deck1';
         vsIcon = 'fa-arrow-up';
         summaryIcon = 'fa-trophy';
         summaryTitle = `${deck1Name} es favorito`;
-        summaryDescription = `${deck1Name} tiene una clara ventaja teórica sobre ${deck2Name}. Sin embargo, un buen side deck y jugadas inteligentes pueden equilibrar el matchup.`;
+        summaryDescription = `${deck1Name} tiene una ventaja teórica sobre ${deck2Name}. Sin embargo, un buen side deck y jugadas inteligentes pueden equilibrar el matchup.`;
     } else if (score2 > score1 + 10) {
         advantage = deck2Name;
         advantageText = `${deck2Name} tiene ventaja`;
-        reason = 'Mejor adaptación al meta y matchup favorable';
+        reason = 'Mejor adaptación al matchup';
         vsText = `${deck2Name} FAVORITO`;
         vsClass = 'summary-deck2';
         vsIcon = 'fa-arrow-down';
@@ -1900,10 +2029,10 @@ function getProfessionalDeckAdvantage(deck1Name, deck2Name, deck1, deck2, going1
     }
     
     // Determinar tácticas basadas en tipos de decks
-    const tactics = getTacticsForMatchup(deck1.type, deck2.type);
+    const tactics = getTacticsForMatchup(deck1.type, deck2.type, deck1.tier, deck2.tier);
     
     // Tips basados en el matchup
-    const tips = getMatchupTips(deck1Name, deck2Name, advantage);
+    const tips = getMatchupTips(deck1Name, deck2Name, advantage, deck1.tier, deck2.tier);
     
     return {
         advantage,
@@ -1922,16 +2051,8 @@ function getProfessionalDeckAdvantage(deck1Name, deck2Name, deck1, deck2, going1
     };
 }
 
-// Calcular score de deck (NUEVA FUNCIÓN)
-function calculateDeckScore(deck, going) {
-    const tierScore = deck.tier === 'Tier 1' ? 85 : deck.tier === 'Tier 2' ? 70 : 55;
-    const difficultyScore = 100 - (deck.difficulty * 7);
-    const goingScore = ((going.first + going.second) / 2) * 15;
-    return Math.round((tierScore + difficultyScore + goingScore) / 3);
-}
-
-// Obtener tácticas para matchup (NUEVA FUNCIÓN)
-function getTacticsForMatchup(type1, type2) {
+// Obtener tácticas para matchup
+function getTacticsForMatchup(type1, type2, tier1, tier2) {
     const tactics = {
         deck1: 'Aplica presión constante',
         deck1Defense: 'Mantén recursos para el largo juego',
@@ -1939,28 +2060,22 @@ function getTacticsForMatchup(type1, type2) {
         deck2Defense: 'Protege tus piezas clave'
     };
     
-    if (type1 === 'Control' && type2 === 'Combo') {
-        tactics.deck1 = 'Interrumpe sus combos clave';
-        tactics.deck1Defense = 'Conserva handtraps para turnos críticos';
-        tactics.deck2 = 'Juega alrededor de las interrupciones';
-        tactics.deck2Defense = 'Ten planes alternativos';
-    } else if (type1 === 'Combo' && type2 === 'Control') {
-        tactics.deck1 = 'Establece un tablero fuerte en turno 1';
-        tactics.deck1Defense = 'Protege tus monstruos de efecto';
-        tactics.deck2 = 'Rompe su tablero con board breakers';
-        tactics.deck2Defense = 'Mantén card advantage';
-    } else if (type1 === 'Aggro' && type2 === 'Control') {
-        tactics.deck1 = 'Presiona rápido antes de que establezcan control';
-        tactics.deck1Defense = 'No gastes todos los recursos muy pronto';
-        tactics.deck2 = 'Sobrevive el push inicial';
-        tactics.deck2Defense = 'Busca el card advantage';
+    // Si un deck es rogue o fun, ajustar tácticas
+    if (tier1 === 'rogue' || tier1 === 'fun') {
+        tactics.deck1 = 'Usa el factor sorpresa';
+        tactics.deck1Defense = 'Juega alrededor del meta conocido';
+    }
+    
+    if (tier2 === 'rogue' || tier2 === 'fun') {
+        tactics.deck2 = 'No subestimes al oponente';
+        tactics.deck2Defense = 'Prepárate para estrategias inusuales';
     }
     
     return tactics;
 }
 
-// Obtener tips del matchup (NUEVA FUNCIÓN)
-function getMatchupTips(deck1Name, deck2Name, advantage) {
+// Obtener tips del matchup
+function getMatchupTips(deck1Name, deck2Name, advantage, tier1, tier2) {
     const tips = [];
     
     if (advantage === 'even') {
@@ -1972,88 +2087,19 @@ function getMatchupTips(deck1Name, deck2Name, advantage) {
         tips.push(`Como ${deck1Name}, mantén la presión constante`);
         tips.push(`Evita overextending contra posibles board breakers`);
         tips.push(`Sideckea específicamente contra ${deck2Name}`);
-        tips.push(`Aprovecha tu ventaja en el grind game`);
+        if (tier2 === 'rogue' || tier2 === 'fun') {
+            tips.push(`Prepárate para estrategias inusuales de ${deck2Name}`);
+        }
     } else {
         tips.push(`Como ${deck2Name}, busca romper su setup inicial`);
         tips.push(`Juega conservador hasta tener ventaja de cartas`);
         tips.push(`Identifica y ataca sus puntos débiles`);
-        tips.push(`Prepárate para el juego largo`);
+        if (tier1 === 'rogue' || tier1 === 'fun') {
+            tips.push(`No subestimes el factor sorpresa de ${deck1Name}`);
+        }
     }
     
     return tips;
-}
-
-// Renderizar información del deck para comparador
-function renderDeckComparatorInfo(deckName, deck, extra) {
-    const going = extra.going || {first: 3, second: 3};
-    const imagePath = deck.image ? `assets/images/decks/${deck.image}` : 'assets/images/decks/default.jpg';
-    
-    return `
-        <div class="comparator-deck-info">
-            <img src="${imagePath}" alt="${deckName}" class="comparator-deck-image" onerror="this.src='assets/images/decks/default.jpg'">
-            <div class="comparator-details">
-                <p><strong>Tipo:</strong> ${deck.type}</p>
-                <p><strong>Tier:</strong> ${deck.tier}</p>
-                <p><strong>Dificultad:</strong> ${deck.difficulty}/10</p>
-                <p><strong>Invocación:</strong> ${extra.engine || 'N/A'}</p>
-                <div class="comparator-going">
-                    <p><strong>Going First:</strong> ${'★'.repeat(going.first)}${'☆'.repeat(5-going.first)}</p>
-                    <p><strong>Going Second:</strong> ${'★'.repeat(going.second)}${'☆'.repeat(5-going.second)}</p>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// Crear resultado de comparación
-function createComparisonResult(deck1Name, deck2Name, deck1, deck2) {
-    const matchup1 = matchups[deck1Name] || {side_in: []};
-    const matchup2 = matchups[deck2Name] || {side_in: []};
-    
-    const advantage = getDeckAdvantage(deck1Name, deck2Name);
-    const side1 = matchup1.side_in?.slice(0, 4).join(', ') || 'No hay información';
-    const side2 = matchup2.side_in?.slice(0, 4).join(', ') || 'No hay información';
-    
-    return `
-        <h3><i class="fas fa-balance-scale"></i> Comparación Detallada</h3>
-        <div class="comparison-grid">
-            <div class="comparison-column">
-                <h4>${deck1Name}</h4>
-                <p><strong>Relación con el tier:</strong> ${advantage.deck1}</p>
-                <p><strong>Side que le daria ventaja a ${deck2Name}:</strong></p>
-                <p class="side-list">${side1}</p>
-            </div>
-            <div class="comparison-column">
-                <h4>${deck2Name}</h4>
-                <p><strong>Relación con el tier:</strong> ${advantage.deck2}</p>
-                <p><strong>Side que le daria ventaja a ${deck1Name}:</strong></p>
-                <p class="side-list">${side2}</p>
-            </div>
-        </div>
-    `;
-}
-
-// Obtener ventaja de matchup
-function getDeckAdvantage(deck1Name, deck2Name) {
-    const deck1 = decks[deck1Name];
-    const deck2 = decks[deck2Name];
-    
-    // Simulación simple de matchup
-    let advantage1 = "Matchup equilibrado";
-    let advantage2 = "Matchup equilibrado";
-    
-    if (deck1.tier === 'Tier 1' && deck2.tier !== 'Tier 1') {
-        advantage1 = "Ventaja por tier superior";
-        advantage2 = "Desventaja por tier inferior";
-    } else if (deck1.type === 'Control' && deck2.type === 'Combo') {
-        advantage1 = "Control suele tener ventaja sobre Combo";
-        advantage2 = "Combo suele tener desventaja contra Control";
-    }
-    
-    return {
-        deck1: advantage1,
-        deck2: advantage2
-    };
 }
 
 // Funciones auxiliares
