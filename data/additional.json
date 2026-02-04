@@ -1,0 +1,257 @@
+{
+  "Dragon Link": {
+    "engine": "Dragon Synchro/Link",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 9, "control": 6, "consistency": 8, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 3, "control": 4, "search": 5, "burn": 1,
+      "beatdown": 5, "stamina": 4, "comeback": 3, "swarm": 5
+    },
+    "tips": [
+      "Aprende las rutas básicas de Borrelend + Hieratic Seal",
+      "Administra bien tu cementerio para resurrecciones",
+      "Usa Romulus para buscar dragon ravine"
+    ]
+  },
+  "Dracotail": {
+    "engine": "Fusion Control",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 9, "control": 9, "consistency": 9, 
+      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+    },
+    "additional": {
+      "draw": 1, "control": 5, "search": 5, "burn": 0,
+      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 3
+    },
+    "tips": [
+      "Aprende los efectos de las trampas",
+      "Recuerda que el efecto de Arthaleon es tanto tu cementerio como para el campo rival",
+      "Aprovecha Hieratic Seal"
+    ]
+  },
+  "Yummy": {
+    "engine": "Synchro y Link",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 9, "control": 9, "consistency": 9, 
+      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+    },
+    "additional": {
+      "draw": 1, "control": 5, "search": 5, "burn": 0,
+      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+    },
+    "tips": [
+      "Recuerda que el efecto de snatchy es una vez por CADENA.",
+      "Usa muy bien los efectos de los links.",
+      "..."
+    ]
+  },
+  "K9": {
+    "engine": "XYZ",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 9, "control": 9, "consistency": 9, 
+      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+    },
+    "additional": {
+      "draw": 1, "control": 5, "search": 5, "burn": 0,
+      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+    },
+    "tips": [
+      "Recuerda que el efecto de snatchy es una vez por CADENA.",
+      "Usa muy bien los efectos de los links.",
+      "..."
+    ]
+  },
+  "Kewl Tune": {
+    "engine": "Synchro",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 9, "control": 9, "consistency": 9, 
+      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+    },
+    "additional": {
+      "draw": 1, "control": 5, "search": 5, "burn": 0,
+      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+    },
+    "tips": [
+      "Recuerda que el efecto de snatchy es una vez por CADENA.",
+      "Usa muy bien los efectos de los links.",
+      "..."
+    ]
+  },
+  "Hecahands": {
+    "engine": "Fusión",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 9, "control": 9, "consistency": 9, 
+      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+    },
+    "additional": {
+      "draw": 1, "control": 5, "search": 5, "burn": 0,
+      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+    },
+    "tips": [
+      "...",
+      "...",
+      "..."
+    ]
+  },
+  "Tearlaments": {
+    "engine": "Fusion Mill",
+    "going": {"first": 5, "second": 4},
+    "stats": {
+      "attack": 8, "control": 7, "consistency": 9, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 9
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 4, "stamina": 5, "comeback": 5, "swarm": 4
+    },
+    "tips": [
+      "Aprende a jugar tanto en tu turno como en el del oponente",
+      "No temas mandar cartas al cementerio",
+      "Planifica tus fusiones con anticipación"
+    ]
+  },
+  "Branded Despia": {
+    "engine": "Fusion Control",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 7, "control": 9, "consistency": 8, 
+      "board_break": 6, "versatility": 7, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 3, "control": 5, "search": 4, "burn": 2,
+      "beatdown": 3, "stamina": 4, "comeback": 4, "swarm": 3
+    },
+    "tips": [
+      "Usa Branded Fusion como tu jugada principal",
+      "Aprende las diferentes fusiones según la situación",
+      "Protege a Mirrorjade con Branded in Red"
+    ]
+  },
+  "Swordsoul": {
+    "engine": "Synchro Midrange",
+    "going": {"first": 4, "second": 4},
+    "stats": {
+      "attack": 8, "control": 7, "consistency": 8, 
+      "board_break": 7, "versatility": 7, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 3, "control": 4, "search": 4, "burn": 2,
+      "beatdown": 4, "stamina": 4, "comeback": 3, "swarm": 4
+    },
+    "tips": [
+      "Aprende las diferentes líneas de Mo Ye",
+      "Usa Chixiao para buscar negaciones",
+      "No subestimes el poder de Chengying"
+    ]
+  },
+  "Floowandereeze": {
+    "engine": "Normal Summon Control",
+    "going": {"first": 5, "second": 2},
+    "stats": {
+      "attack": 6, "control": 8, "consistency": 9, 
+      "board_break": 5, "versatility": 6, "resilience": 7, "recovery": 5
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 1,
+      "beatdown": 2, "stamina": 3, "comeback": 2, "swarm": 2
+    },
+    "tips": [
+      "Aprende a secuenciar tus invocaciones normales",
+      "Usa Dreaming Town para recuperarte",
+      "Planifica tu uso de Robina y Eglen"
+    ]
+  },
+  "Marincess": {
+    "engine": "Link Combo",
+    "going": {"first": 3, "second": 4},
+    "stats": {
+      "attack": 7, "control": 6, "consistency": 7, 
+      "board_break": 6, "versatility": 6, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 2, "control": 3, "search": 4, "burn": 1,
+      "beatdown": 3, "stamina": 4, "comeback": 3, "swarm": 5
+    },
+    "tips": [
+      "Protege siempre a tu Marincess Crystal Heart",
+      "Aprende las diferentes líneas de combo",
+      "Usa Sleepy Maiden para protección adicional"
+    ]
+  },
+  "Sky Striker": {
+    "engine": "Link Spell Control",
+    "going": {"first": 3, "second": 5},
+    "stats": {
+      "attack": 5, "control": 9, "consistency": 8, 
+      "board_break": 7, "versatility": 9, "resilience": 6, "recovery": 7
+    },
+    "additional": {
+      "draw": 5, "control": 5, "search": 5, "burn": 3,
+      "beatdown": 2, "stamina": 3, "comeback": 4, "swarm": 2
+    },
+    "tips": [
+      "Mantén 3 magias en tu cementerio para efectos completos",
+      "Usa Raye para reciclar y adaptarte",
+      "Aprende cuándo usar cada magia Sky Striker"
+    ]
+  },
+  "Dark Magician": {
+    "engine": "Control Combo",
+    "going": {"first": 3, "second": 3},
+    "stats": {
+      "attack": 6, "control": 7, "consistency": 6, 
+      "board_break": 5, "versatility": 6, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 3, "control": 4, "search": 4, "burn": 2,
+      "beatdown": 3, "stamina": 3, "comeback": 3, "swarm": 2
+    },
+    "tips": [
+      "Configura Eternal Soul + Circle para control",
+      "Usa Magician's Salvation para recuperación",
+      "Planifica tu uso de Dark Magical Circle"
+    ]
+  },
+  "Spright": {
+    "engine": "Level/Link 2 Combo",
+    "going": {"first": 5, "second": 4},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Labrynth": {
+    "engine": "Trap Control",
+    "going": {"first": 4, "second": 2},
+    "stats": {
+      "attack": 6, "control": 9, "consistency": 7, 
+      "board_break": 5, "versatility": 6, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 3, "control": 5, "search": 4, "burn": 3,
+      "beatdown": 2, "stamina": 4, "comeback": 3, "swarm": 2
+    },
+    "tips": [
+      "Aprende a activar trampas desde la mano",
+      "Usa Lovely Labrynth para reciclar",
+      "Configura Welcome Labrynth para protección"
+    ]
+  }
+}

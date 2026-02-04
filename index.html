@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh! Deck Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body data-theme="default" data-mode="light">
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-dragon"></i>
+                <h1>Yu-Gi-Oh! Deck Analyzer</h1>
+            </div>
+            <div class="theme-selector">
+                <div class="mode-toggle">
+                    <button id="mode-toggle" class="theme-btn">
+                        <i class="fas fa-moon"></i> Modo Oscuro
+                    </button>
+                </div>
+                <div class="theme-buttons">
+                    <button class="theme-btn active" data-theme="default">Por Defecto</button>
+                    <button class="theme-btn" data-theme="kashtira">Kashtira</button>
+                    <button class="theme-btn" data-theme="tearlaments">Tearlaments</button>
+                    <button class="theme-btn" data-theme="scareclaw">Scareclaw</button>
+                    <button class="theme-btn" data-theme="manadium">Manadium</button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <!-- Sidebar cargado dinámicamente -->
+            <aside class="sidebar" id="sidebar-container">
+                <!-- Se cargará con JS -->
+            </aside>
+            
+            <main class="content-area">
+                <!-- Menú Principal -->
+                <section id="menu" class="view-section active">
+                    <div class="view-header">
+                        <h2>Menú Principal</h2>
+                        <div class="view-actions">
+                            <div class="search-box">
+                                <input type="text" class="search-input" id="menu-search-input" placeholder="Buscar deck...">
+                                <div class="autocomplete-dropdown" id="menu-autocomplete"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="deck-grid" id="menu-decks">
+                        <!-- Los decks se cargarán aquí dinámicamente -->
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle"></i> Instrucciones</h3>
+                        <p>Usa el menú lateral para navegar entre las diferentes funciones:</p>
+                        <ul class="instructions-list">
+                            <li><strong>Buscar Deck (Simple):</strong> Vista rápida con información básica</li>
+                            <li><strong>Buscar Deck (Completo):</strong> Vista detallada con toda la información</li>
+                            <li><strong>Meta View:</strong> Tabla de todos los decks ordenados por Tier</li>
+                            <li><strong>Comparador:</strong> Compara dos decks lado a lado</li>
+                            <li><strong>Meta Análisis:</strong> Estadísticas del metagame actual</li>
+                            <li><strong>Side Deck:</strong> Cartas más importantes del side deck</li>
+                            <li><strong>Handtraps Tier List:</strong> Tier list de handtraps del formato actual</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Buscar Deck (Simple) -->
+                <section id="search-simple" class="view-section">
+                    <div class="view-header">
+                        <h2>Buscar Deck (Vista Simple)</h2>
+                    </div>
+                    
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="simple-search-input" placeholder="Escribe el nombre del deck...">
+                            <div class="autocomplete-dropdown" id="simple-autocomplete"></div>
+                            <button class="search-btn" id="simple-search-btn">Buscar</button>
+                        </div>
+                    </div>
+                    
+                    <div id="simple-deck-result">
+                        <div class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <p>Escribe el nombre de un deck para ver información básica.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Buscar Deck (Completo) -->
+                <section id="search-complete" class="view-section">
+                    <div class="view-header">
+                        <h2>Buscar Deck (Vista Completa)</h2>
+                    </div>
+                    
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="complete-search-input" placeholder="Escribe el nombre del deck...">
+                            <div class="autocomplete-dropdown" id="complete-autocomplete"></div>
+                            <button class="search-btn" id="complete-search-btn">Buscar</button>
+                        </div>
+                    </div>
+                    
+                    <div id="complete-deck-result" class="scrollable-content">
+                        <div class="empty-state">
+                            <i class="fas fa-list-alt"></i>
+                            <p>Escribe el nombre de un deck para ver información detallada.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Meta View -->
+                <section id="meta" class="view-section">
+                    <div class="view-header">
+                        <h2>Meta View - Decks del Metagame</h2>
+                        <div class="view-actions">
+                            <select id="meta-tier-filter" class="filter-select">
+                                <option value="all">Todos los Tiers</option>
+                                <option value="1">Tier 1</option>
+                                <option value="2">Tier 2</option>
+                                <option value="3">Tier 3</option>
+                            </select>
+                            <button id="meta-sort-tier" class="action-btn">
+                                <i class="fas fa-sort-amount-down"></i> Ordenar por Tier
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="meta-table">
+                            <thead>
+                                <tr>
+                                    <th>DECK</th>
+                                    <th>TIER</th>
+                                    <th>ESTILO</th>
+                                    <th>DIFICULTAD</th>
+                                    <th>DEBILIDAD CLAVE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="meta-table-body">
+                                <!-- La tabla se generará aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Comparador -->
+                <section id="compare" class="view-section">
+                    <div class="view-header">
+                        <h2>Comparador de Decks</h2>
+                    </div>
+                    
+                    <div class="comparator-container">
+                        <div class="comparator-deck">
+                            <div class="comparator-header">
+                                <h3>Deck 1</h3>
+                            </div>
+                            <div class="comparator-select-container">
+                                <input type="text" class="comparator-search" id="deck1-search" placeholder="Buscar deck...">
+                                <div class="autocomplete-dropdown" id="deck1-autocomplete"></div>
+                            </div>
+                            <div id="deck1-info" class="comparator-info">
+                                <!-- Información del deck 1 -->
+                            </div>
+                        </div>
+                        
+                        <div class="vs-separator">
+                            <div class="vs-circle">VS</div>
+                        </div>
+                        
+                        <div class="comparator-deck">
+                            <div class="comparator-header">
+                                <h3>Deck 2</h3>
+                            </div>
+                            <div class="comparator-select-container">
+                                <input type="text" class="comparator-search" id="deck2-search" placeholder="Buscar deck...">
+                                <div class="autocomplete-dropdown" id="deck2-autocomplete"></div>
+                            </div>
+                            <div id="deck2-info" class="comparator-info">
+                                <!-- Información del deck 2 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="comparison-result" class="comparison-result">
+                        <!-- Resultado de la comparación -->
+                    </div>
+                </section>
+                
+                <!-- Meta Análisis -->
+                <section id="meta-analysis" class="view-section">
+                    <div class="view-header">
+                        <h2>Meta Análisis</h2>
+                        <div class="view-actions">
+                            <button id="refresh-analysis" class="action-btn">
+                                <i class="fas fa-sync-alt"></i> Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="meta-analysis-grid">
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-chart-bar"></i> Decks Más Jugados</h3>
+                            <div id="most-played-decks" class="analysis-content">
+                                <!-- Lista de decks más jugados -->
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-trophy"></i> Tiers del Metagame</h3>
+                            <div id="tier-distribution" class="analysis-content">
+                                <!-- Distribución de tiers -->
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-card">
+                            <h3><i class="fas fa-shield-alt"></i> Debilidades Comunes</h3>
+                            <div id="most-common-weak" class="analysis-content">
+                                <!-- Lista de debilidades más comunes -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Side Deck -->
+                <section id="sidedeck" class="view-section">
+                    <div class="view-header">
+                        <h2>Side Deck - Cartas Más Importantes</h2>
+                        <div class="view-actions">
+                            <select id="side-type-filter" class="filter-select">
+                                <option value="all">Todas las cartas</option>
+                                <option value="handtrap">Handtraps</option>
+                                <option value="board-breaker">Board Breakers</option>
+                                <option value="floodgate">Floodgates</option>
+                                <option value="removal">Remoción</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="sidedeck-cards" class="cards-grid">
+                        <!-- Cartas de side deck -->
+                    </div>
+                </section>
+                
+                <!-- Handtraps Tier List -->
+                <section id="handtraps" class="view-section">
+                    <div class="view-header">
+                        <h2>Handtraps Tier List</h2>
+                        <div class="view-actions">
+                            <select id="handtrap-format" class="filter-select">
+                                <option value="master-duel">Master Duel</option>
+                                <option value="tcg">TCG</option>
+                                <option value="ocg">OCG</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="tierlist-container">
+                        <div class="tier-row" data-tier="s">
+                            <div class="tier-header tier-s">
+                                <h3>S Tier</h3>
+                                <span>Must Have</span>
+                            </div>
+                            <div class="tier-cards" id="tier-s">
+                                <!-- Handtraps S Tier -->
+                            </div>
+                        </div>
+                        
+                        <div class="tier-row" data-tier="a">
+                            <div class="tier-header tier-a">
+                                <h3>A Tier</h3>
+                                <span>Highly Recommended</span>
+                            </div>
+                            <div class="tier-cards" id="tier-a">
+                                <!-- Handtraps A Tier -->
+                            </div>
+                        </div>
+                        
+                        <div class="tier-row" data-tier="b">
+                            <div class="tier-header tier-b">
+                                <h3>B Tier</h3>
+                                <span>Situational</span>
+                            </div>
+                            <div class="tier-cards" id="tier-b">
+                                <!-- Handtraps B Tier -->
+                            </div>
+                        </div>
+                        
+                        <div class="tier-row" data-tier="c">
+                            <div class="tier-header tier-c">
+                                <h3>C Tier</h3>
+                                <span>Niche</span>
+                            </div>
+                            <div class="tier-cards" id="tier-c">
+                                <!-- Handtraps C Tier -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tierlist-info">
+                        <h3><i class="fas fa-info-circle"></i> Información de la Tier List</h3>
+                        <p>Esta tier list está basada en el formato actual y considera:</p>
+                        <ul>
+                            <li>Impacto en el metagame actual</li>
+                            <li>Versatilidad contra diferentes decks</li>
+                            <li>Relación costo-beneficio</li>
+                            <li>Consistencia y facilidad de uso</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <footer>
+            <p>Yu-Gi-Oh! Deck Analyzer &copy; 2024 - Todos los derechos reservados a sus respectivos dueños.</p>
+            <p>Esta aplicación es un proyecto de análisis para la comunidad de Yu-Gi-Oh!</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contacto</a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/theme-manager.js"></script>
+    <script src="js/search-autocomplete.js"></script>
+    <script src="js/deck-renderer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

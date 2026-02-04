@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Ash Blossom & Joyous Spring",
+    "type": "handtrap",
+    "description": "Niega un efecto que mande una carta del Deck al Cementerio, o que añada una carta del Deck a la mano.",
+    "usage": "95% de los decks",
+    "image": "ash-blossom.jpg"
+  },
+  {
+    "name": "Nibiru, the Primal Being",
+    "type": "board-breaker",
+    "description": "Si tu oponente Invocó de Modo Especial 5 o más monstruos este turno, puedes tributar todos los monstruos en el Campo.",
+    "usage": "80% de los decks",
+    "image": "nibiru.jpg"
+  },
+  {
+    "name": "Dark Ruler No More",
+    "type": "board-breaker",
+    "description": "Niega los efectos de todos los monstruos boca arriba que controle tu oponente en este turno.",
+    "usage": "70% de los decks",
+    "image": "dark-ruler.jpg"
+  },
+  {
+    "name": "D.D. Crow",
+    "type": "handtrap",
+    "description": "Descarta esta carta, y después selecciona 1 carta en cualquier Cementerio; destierra ese objetivo.",
+    "usage": "60% de los decks",
+    "image": "dd-crow.jpg"
+  },
+  {
+    "name": "Evenly Matched",
+    "type": "board-breaker",
+    "description": "Si tu oponente controla más cartas que tú: haz que tu oponente destierre cartas boca abajo de su Campo hasta que controle la misma cantidad de cartas que tú.",
+    "usage": "55% de los decks",
+    "image": "evenly-matched.jpg"
+  }
+]

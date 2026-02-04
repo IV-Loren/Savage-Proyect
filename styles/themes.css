@@ -1,0 +1,163 @@
+/* Tema Kashtira - Púrpuras espaciales y azules cósmicos */
+[data-theme="kashtira"] {
+    --bg-primary: rgba(18, 4, 8, 0.96);
+    --bg-secondary: rgba(38, 8, 14, 0.85);
+    --bg-card: rgba(60, 12, 20, 0.9);
+    --bg-sidebar: rgba(30, 8, 14, 0.88);
+    --bg-footer: rgba(22, 6, 12, 0.95);
+    --text-primary: #ffe6e6;
+    --text-secondary: #d8a2a2;
+    --accent-cyan: #ea1f1f;
+    --accent-magenta: #f8637c;
+    --accent-green: #4dff9d;
+    --accent-yellow: #ffd84d;
+    --accent-red: #ff6d5d;
+    --pastel-pink: #8b3b35;
+    --pastel-blue: #5a1010;
+    --pastel-purple: #822f26;
+    --pastel-green: #4dff9d;
+    --border-color: rgba(196, 58, 58, 0.45);
+    --shadow: rgba(196, 58, 58, 0.25);
+    --shadow-hover: rgba(255, 46, 46, 0.5);
+}
+
+[data-theme="kashtira"][data-mode="light"] {
+    --bg-primary: rgba(230, 220, 255, 0.95);
+    --bg-secondary: rgba(240, 235, 255, 0.7);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-sidebar: rgba(245, 240, 255, 0.8);
+    --bg-footer: rgba(250, 245, 255, 0.9);
+    --text-primary: #4d2d7a;
+    --text-secondary: #7a5d9d;
+    --border-color: rgba(109, 93, 255, 0.15);
+    --shadow: rgba(109, 93, 255, 0.1);
+    --shadow-hover: rgba(157, 77, 255, 0.2);
+}
+
+/* Tema Tearlaments - Azules acuáticos y verdes esmeralda */
+[data-theme="tearlaments"] {
+    --bg-primary: rgba(20, 40, 70, 0.95);
+    --bg-secondary: rgba(30, 60, 100, 0.7);
+    --bg-card: rgba(40, 70, 110, 0.85);
+    --bg-sidebar: rgba(25, 50, 90, 0.8);
+    --bg-footer: rgba(20, 45, 80, 0.9);
+    --text-primary: #b3e0ff;
+    --text-secondary: #8cc7e6;
+    --accent-cyan: #3dd1ff;
+    --accent-magenta: #5d9dff;
+    --accent-green: #3dffb3;
+    --accent-yellow: #ffe03d;
+    --accent-red: #ff5d5d;
+    --pastel-pink: #5d9dff;
+    --pastel-blue: #3dd1ff;
+    --pastel-purple: #7a5dff;
+    --pastel-green: #3dffb3;
+    --border-color: rgba(61, 209, 255, 0.25);
+    --shadow: rgba(61, 209, 255, 0.2);
+    --shadow-hover: rgba(93, 157, 255, 0.3);
+}
+
+[data-theme="tearlaments"][data-mode="light"] {
+    --bg-primary: rgba(220, 240, 255, 0.95);
+    --bg-secondary: rgba(235, 245, 255, 0.7);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-sidebar: rgba(240, 250, 255, 0.8);
+    --bg-footer: rgba(245, 250, 255, 0.9);
+    --text-primary: #1a4d7a;
+    --text-secondary: #3d7a9d;
+    --border-color: rgba(61, 209, 255, 0.2);
+    --shadow: rgba(61, 209, 255, 0.15);
+    --shadow-hover: rgba(93, 157, 255, 0.25);
+}
+
+/* Tema Scareclaw - Rojos oscuros y naranjas ardientes */
+[data-theme="scareclaw"] {
+    --bg-primary: rgba(60, 20, 25, 0.95);
+    --bg-secondary: rgba(90, 30, 35, 0.7);
+    --bg-card: rgba(100, 40, 45, 0.85);
+    --bg-sidebar: rgba(80, 25, 30, 0.8);
+    --bg-footer: rgba(70, 20, 25, 0.9);
+    --text-primary: #ffc8c8;
+    --text-secondary: #e6a3a3;
+    --accent-cyan: #ff5d5d;
+    --accent-magenta: #ff3d7a;
+    --accent-green: #ffb35d;
+    --accent-yellow: #ffd85d;
+    --accent-red: #ff3d3d;
+    --pastel-pink: #ff5d7a;
+    --pastel-blue: #ff7a5d;
+    --pastel-purple: #ff5d9d;
+    --pastel-green: #ffb35d;
+    --border-color: rgba(255, 61, 61, 0.25);
+    --shadow: rgba(255, 93, 93, 0.2);
+    --shadow-hover: rgba(255, 61, 122, 0.3);
+}
+
+[data-theme="scareclaw"][data-mode="light"] {
+    --bg-primary: rgba(255, 240, 240, 0.95);
+    --bg-secondary: rgba(255, 230, 230, 0.7);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-sidebar: rgba(255, 235, 235, 0.8);
+    --bg-footer: rgba(255, 245, 245, 0.9);
+    --text-primary: #7a1a1a;
+    --text-secondary: #9d3d3d;
+    --border-color: rgba(255, 93, 93, 0.15);
+    --shadow: rgba(255, 93, 93, 0.1);
+    --shadow-hover: rgba(255, 61, 122, 0.2);
+}
+
+/* Tema Manadium - Astral / Visas Starfrost (Blanco, Dorado y Luz Divina) */
+[data-theme="manadium"] {
+    --bg-primary: rgba(18, 18, 24, 0.96);
+    --bg-secondary: rgba(28, 28, 38, 0.75);
+    --bg-card: rgba(40, 40, 55, 0.88);
+    --bg-sidebar: rgba(25, 25, 36, 0.85);
+    --bg-footer: rgba(22, 22, 32, 0.92);
+    --text-primary: #f5f5ff;
+    --text-secondary: #d6d6f0;
+    --accent-cyan: #875d41;      
+    --accent-magenta: #f7ffc8;  
+    --accent-green: #fff0b3;     
+    --accent-yellow: #ffd76a; 
+    --accent-red: #ff9b6a;       
+    --pastel-pink: #ffc609;
+    --pastel-blue: #f0fe9b;
+    --pastel-purple: #b8a8ff;
+    --pastel-green: #fff0b3;
+    --border-color: rgba(255, 215, 106, 0.35);
+    --shadow: rgba(255, 215, 106, 0.25);
+    --shadow-hover: rgba(255, 215, 106, 0.45);
+}
+
+
+[data-theme="manadium"][data-mode="light"] {
+    /* Fondos tipo pergamino divino */
+    --bg-primary: #f3ecdf;
+    --bg-secondary: #eadfcb;
+    --bg-card: #fbf7f0;
+    --bg-sidebar: #ede2cf;
+    --bg-footer: #e4d5ba;
+
+    /* Texto MUY oscuro para máxima legibilidad */
+    --text-primary: #1a1006;   /* Marrón casi negro */
+    --text-secondary: #4a2f12; /* Marrón fuerte */
+
+    /* Bordes y glow dorado */
+    --border-color: rgba(45, 42, 38, 0.55);
+    --shadow: rgba(170, 125, 55, 0.3);
+    --shadow-hover: rgba(170, 125, 55, 0.5);
+
+    /* Acentos SOLO dorados y marrones */
+    --accent-cyan: #5d574c;      /* Marrón claro */
+    --accent-magenta: #4a4337;  /* Dorado apagado */
+    --accent-green: #3c2c03;    /* Energía */
+    --accent-yellow: #cfa44a;   /* Oro */
+    --accent-red: #a86a32;      /* Calor */
+
+    --pastel-pink: #cbb38a;
+    --pastel-blue: #d9c6a3;
+    --pastel-purple: #cbb38a;
+    --pastel-green: #e6d3a3;
+}
+
+

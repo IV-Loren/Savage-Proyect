@@ -1,0 +1,167 @@
+{
+  "Dragon Link": {
+    "type": "Combo",
+    "tier": "Tier 1",
+    "difficulty": 9,
+    "weaknesses": ["Nibiru", "Droll & Lock Bird", "Dimension Shifter"],
+    "image": "dragon-link.jpg",
+    "description": "Deck de combo que utiliza enlaces y síncros de dragones para establecer tableros poderosos.",
+    "archetype": "Chaos, Bystial, Rokket, y Red-Eyes.",
+    "recommended_size": "40-45 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Dracotail": {
+    "type": "Midrange",
+    "tier": "Tier 1",
+    "difficulty": 6,
+    "weaknesses": ["Nibiru", "Droll & Lock Bird", "Dimension Shifter"],
+    "image": "dracotail.jpg",
+    "description": "Deck de midrange que utiliza fusiones para devolver a la mano y destruir.",
+    "archetype": "Dracotail",
+    "recommended_size": "17 a 20 cartas",
+    "extra_deck": "6 a 8 cartas"
+  },
+  "Yummy": {
+    "type": "Midrange",
+    "tier": "Tier 1",
+    "difficulty": 4,
+    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "image": "Yummy.jpg",
+    "description": "Deck que hace sincronia con links 1.",
+    "archetype": "Yummy",
+    "recommended_size": "17 a 20 cartas",
+    "extra_deck": "6 a 8 cartas"
+  },
+  "K9": {
+    "type": "Midrange",
+    "tier": "Tier 1",
+    "difficulty": 4,
+    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "image": "K9.jpg",
+    "description": "Pueden hacer XYZ en turno 0, en caso de que el oponente active efecto en mano.",
+    "archetype": "K9",
+    "recommended_size": "17 a 20 cartas",
+    "extra_deck": "6 a 8 cartas"
+  },
+  "Kewl Tune": {
+    "type": "Midrange",
+    "tier": "Tier 2",
+    "difficulty": 4,
+    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "image": "Kewl-Tune.jpg",
+    "description": "???",
+    "archetype": "Kewl Tune",
+    "recommended_size": "17 a 20 cartas",
+    "extra_deck": "6 a 8 cartas"
+  },
+  "Hecahands": {
+    "type": "Midrange",
+    "tier": "Tier 3",
+    "difficulty": 4,
+    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "image": "Hecahands.jpg",
+    "description": "???",
+    "archetype": "Hecahands",
+    "recommended_size": "17 a 20 cartas",
+    "extra_deck": "6 a 8 cartas"
+  },
+  "Tearlaments": {
+    "type": "Combo",
+    "tier": "Tier 3",
+    "difficulty": 9,
+    "weaknesses": ["D.D. Crow", "Necrovalley", "Gravekeepers"],
+    "image": "tearlaments.jpg",
+    "description": "Arquetipo de fusión que utiliza el cementerio como recurso principal.",
+    "archetype": "Tearlaments",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Branded Despia": {
+    "type": "Control",
+    "tier": "Tier 1",
+    "difficulty": 9,
+    "weaknesses": ["Dimensional Barrier", "Anti-Spell Fragrance", "Artifact Lancea"],
+    "image": "branded-despia.jpg",
+    "description": "Deck de fusión que controla el campo mientras genera ventaja de cartas.",
+    "archetype": "Branded/Despia",
+    "recommended_size": "40-45 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Swordsoul": {
+    "type": "Midrange",
+    "tier": "Tier 2",
+    "difficulty": 5,
+    "weaknesses": ["Skill Drain", "Summon Limit", "Gozen Match"],
+    "image": "swordsoul.jpg",
+    "description": "Deck de síncros que genera tokens para invocaciones rápidas.",
+    "archetype": "Swordsoul",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Floowandereeze": {
+    "type": "Control",
+    "tier": "Tier 2",
+    "difficulty": 1,
+    "weaknesses": ["Maxx 'C'", "Droll & Lock Bird", "Ash Blossom"],
+    "image": "floowandereeze.jpg",
+    "description": "Deck que utiliza invocaciones normales múltiples para controlar el campo.",
+    "archetype": "Floowandereeze",
+    "recommended_size": "40 cartas",
+    "extra_deck": "0-5 cartas"
+  },
+  "Marincess": {
+    "type": "Combo",
+    "tier": "Tier 2",
+    "difficulty": 5,
+    "weaknesses": ["Kaijus", "Sphere Mode", "Dark Ruler No More"],
+    "image": "marincess.jpg",
+    "description": "Deck de enlace acuático que protege a su monstruo principal.",
+    "archetype": "Marincess",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Sky Striker": {
+    "type": "Control",
+    "tier": "Tier 3",
+    "difficulty": 8,
+    "weaknesses": ["Imperial Order", "Mystic Mine", "Anti-Spell Fragrance"],
+    "image": "sky-striker.jpg",
+    "description": "Deck de control que utiliza magias para generar ventaja.",
+    "archetype": "Sky Striker",
+    "recommended_size": "40-43 cartas",
+    "extra_deck": "12-15 cartas"
+  },
+  "Dark Magician": {
+    "type": "Control",
+    "tier": "Tier 3",
+    "difficulty": 5,
+    "weaknesses": ["Backrow removal", "Spell negation", "Grave disruption"],
+    "image": "dark-magician.jpg",
+    "description": "Deck clásico basado en el Mago Oscuro con trampas de apoyo.",
+    "archetype": "Dark Magician",
+    "recommended_size": "40-45 cartas",
+    "extra_deck": "10-12 cartas"
+  },
+  "Spright": {
+    "type": "Combo",
+    "tier": "Tier 1",
+    "difficulty": 7,
+    "weaknesses": ["Nibiru", "Droll & Lock Bird", "Skill Drain"],
+    "image": "spright.jpg",
+    "description": "Deck de nivel/link 2 que genera rápidamente tableros de interacción.",
+    "archetype": "Spright",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Labrynth": {
+    "type": "Control",
+    "tier": "Tier 2",
+    "difficulty": 6,
+    "weaknesses": ["Backrow removal", "Royal Decree", "Evenly Matched"],
+    "image": "labrynth.jpg",
+    "description": "Deck de trampas que activa efectos desde la mano y el cementerio.",
+    "archetype": "Labrynth",
+    "recommended_size": "40-45 cartas",
+    "extra_deck": "5-8 cartas"
+  }
+}

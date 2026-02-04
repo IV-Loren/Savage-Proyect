@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Maxx 'C'",
+    "tier": "S",
+    "image": "maxx-c.jpg",
+    "formats": ["master-duel", "ocg"]
+  },
+  {
+    "name": "Fidraulis Harmonia",
+    "tier": "S",
+    "image": "Fidraulis-Harmonia.jpg",
+    "formats": ["ocg"]
+  },
+  {
+    "name": "Ash Blossom & Joyous Spring",
+    "tier": "S",
+    "image": "ash-blossom.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Dominus Impulse",
+    "tier": "S",
+    "image": "Impulse.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Nibiru, the Primal Being",
+    "tier": "B",
+    "image": "nibiru.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Infinite Impermanence",
+    "tier": "A",
+    "image": "impermanence.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Effect Veiler",
+    "tier": "A",
+    "image": "effect-veiler.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Ghost Belle & Haunted Mansion",
+    "tier": "B",
+    "image": "ghost-belle.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Ghost Ogre & Snow Rabbit",
+    "tier": "B",
+    "image": "ghost-ogre.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "D.D. Crow",
+    "tier": "C",
+    "image": "dd-crow.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  },
+  {
+    "name": "Skull Meister",
+    "tier": "C",
+    "image": "skull-meister.jpg",
+    "formats": ["master-duel", "tcg", "ocg"]
+  }
+]
