@@ -155,7 +155,7 @@ function loadSidebar() {
                     <option value="all">Todos los Tipos</option>
                     <option value="Combo">Combo</option>
                     <option value="Control">Control</option>
-                    <option value="Midrange">Midrange</option>
+                    <option value="Mid-Range">Mid-Range</option>
                     <option value="Aggro">Aggro</option>
                 </select>
             </div>
@@ -1017,32 +1017,66 @@ function loadHandtrapsTierList() {
     });
 }
 
-// Cargar meta análisis
+// Cargar meta análisis profesional
 function loadMetaAnalysis() {
-    // Decks más jugados (simulación basada en tier)
-    const mostPlayed = Object.keys(decks)
-        .sort((a, b) => {
-            const tierA = decks[a].tier;
-            const tierB = decks[b].tier;
-            if (tierA === tierB) return a.localeCompare(b);
-            return tierA.localeCompare(tierB);
-        })
-        .slice(0, 5);
+    const totalDecks = Object.keys(decks).length;
     
-    document.getElementById('most-played-decks').innerHTML = `
-        <ol>
-            ${mostPlayed.map(deck => `
-                <li>
-                    ${deck} 
-                    <span class="tier-badge ${decks[deck].tier === 'Tier 1' ? 'tier-1' : decks[deck].tier === 'Tier 2' ? 'tier-2' : 'tier-3'}">
-                        ${decks[deck].tier}
-                    </span>
-                </li>
-            `).join('')}
-        </ol>
-    `;
+    // Actualizar contadores del header
+    document.getElementById('total-decks-count').textContent = totalDecks;
     
-    // Distribución de tiers
+    // Calcular diversidad del meta (nuevo cálculo)
+    const deckTypes = {};
+    Object.values(decks).forEach(deck => {
+        deckTypes[deck.type] = (deckTypes[deck.type] || 0) + 1;
+    });
+    const typeDiversity = Math.min(Object.keys(deckTypes).length * 25, 100);
+    document.getElementById('meta-diversity').textContent = `${typeDiversity}%`;
+    
+    // Calcular dificultad promedio
+    const totalDifficulty = Object.values(decks).reduce((sum, deck) => sum + deck.difficulty, 0);
+    const avgDifficulty = (totalDifficulty / totalDecks).toFixed(1);
+    document.getElementById('avg-difficulty').textContent = `${avgDifficulty}/10`;
+    
+    // Calcular tier dominante
+    const tierCounts = calculateTierDistribution();
+    const dominantTier = Object.entries(tierCounts).reduce((a, b) => a[1] > b[1] ? a : b)[0];
+    document.getElementById('dominant-tier').textContent = dominantTier.replace('Tier ', 'T');
+    
+    // Distribución de Tier (versión profesional)
+    const tierDistributionHTML = generateTierDistributionHTML(tierCounts, totalDecks);
+    document.getElementById('tier-distribution-pro').innerHTML = tierDistributionHTML;
+    
+    // Top 5 Decks del Meta
+    const topDecks = calculateTopDecks();
+    renderTopDecks(topDecks);
+    
+    // Matchups Clave
+    const keyMatchups = generateKeyMatchups();
+    renderKeyMatchups(keyMatchups);
+    
+    // Distribución por Tipo
+    renderTypeDistribution(deckTypes);
+    
+    // Análisis de Debilidades
+    const weaknesses = analyzeCommonWeaknesses();
+    renderWeaknessAnalysis(weaknesses);
+    
+    // Performance por Tipo
+    const performanceStats = calculatePerformanceByType();
+    renderPerformanceStats(performanceStats);
+    
+    // Side Deck del Meta
+    renderMetaSideDeck();
+    
+    // Estadísticas Generales
+    renderGeneralStats();
+    
+    // Animar elementos
+    animateElements();
+}
+
+// Funciones auxiliares específicas para cada sección
+function calculateTierDistribution() {
     const tierCounts = {
         'Tier 1': 0,
         'Tier 2': 0,
@@ -1055,29 +1089,209 @@ function loadMetaAnalysis() {
         }
     });
     
-    const totalDecks = Object.keys(decks).length;
+    return tierCounts;
+}
+
+function generateTierDistributionHTML(tierCounts, totalDecks) {
+    const tierColors = {
+        'Tier 1': '#70d870',
+        'Tier 2': '#d8d870',
+        'Tier 3': '#d87070'
+    };
     
-    document.getElementById('tier-distribution').innerHTML = `
-        <div class="tier-distribution">
+    const tierIcons = {
+        'Tier 1': 'crown',
+        'Tier 2': 'medal',
+        'Tier 3': 'shield'
+    };
+    
+    return `
+        <div class="tier-distribution-pro">
             ${Object.entries(tierCounts).map(([tier, count]) => {
                 const percentage = totalDecks > 0 ? Math.round((count / totalDecks) * 100) : 0;
+                const color = tierColors[tier];
+                
                 return `
-                    <div class="tier-dist-item">
-                        <div class="tier-dist-header">
-                            <span class="tier-dist-name">${tier}</span>
-                            <span class="tier-dist-count">${count} (${percentage}%)</span>
+                    <div class="tier-dist-item-pro">
+                        <div class="tier-dist-header-pro">
+                            <span class="tier-dist-name">
+                                <i class="fas fa-${tierIcons[tier]}"></i>
+                                ${tier}
+                            </span>
+                            <span class="tier-dist-count">${count} decks</span>
                         </div>
-                        <div class="bar">
-                            <div class="bar-fill ${tier === 'Tier 1' ? 'bar-green' : tier === 'Tier 2' ? 'bar-yellow' : 'bar-red'}" 
-                                 style="width: ${percentage}%"></div>
+                        <div class="tier-dist-bar">
+                            <div class="tier-dist-fill" style="width: ${percentage}%; background-color: ${color}"></div>
+                        </div>
+                        <div class="tier-dist-info">
+                            <span>${percentage}% del meta</span>
+                            <span>Representación: ${count}/${totalDecks}</span>
                         </div>
                     </div>
                 `;
             }).join('')}
         </div>
     `;
+}
+
+function calculateTopDecks() {
+    const deckScores = Object.keys(decks).map(deckName => {
+        const deck = decks[deckName];
+        const extra = additional[deckName] || {};
+        const going = extra.going || {first: 3, second: 3};
+        const score = calculateDeckScore(deck, going);
+        return {deckName, deck, score};
+    });
     
-    // Debilidades comunes
+    return deckScores.sort((a, b) => b.score - a.score).slice(0, 5);
+}
+
+function renderTopDecks(topDecks) {
+    const topTierCount = topDecks.filter(d => d.deck.tier === 'Tier 1').length;
+    const avgScore = Math.round(topDecks.reduce((sum, d) => sum + d.score, 0) / topDecks.length);
+    
+    document.getElementById('top-tier-count').textContent = topTierCount;
+    document.getElementById('avg-win-rate').textContent = `${avgScore}%`;
+    
+    document.getElementById('top-decks-meta').querySelector('.analysis-list').innerHTML = `
+        ${topDecks.map((item, index) => {
+            const tierClass = item.deck.tier === 'Tier 1' ? 'tier-1' : 
+                            item.deck.tier === 'Tier 2' ? 'tier-2' : 'tier-3';
+            const tierColor = item.deck.tier === 'Tier 1' ? '#70d870' : 
+                            item.deck.tier === 'Tier 2' ? '#d8d870' : '#d87070';
+            
+            return `
+                <li>
+                    <div class="list-rank">${index + 1}</div>
+                    <div class="list-content">
+                        <div class="deck-name">${item.deckName}</div>
+                        <div class="deck-meta">
+                            <span style="color: ${tierColor}; font-weight: bold;">${item.deck.tier}</span>
+                            <span>${item.deck.type}</span>
+                            <span>Score: ${item.score}</span>
+                        </div>
+                    </div>
+                </li>
+            `;
+        }).join('')}
+    `;
+}
+
+function generateKeyMatchups() {
+    const deckNames = Object.keys(decks);
+    if (deckNames.length < 3) return [];
+    
+    // Seleccionar los mejores decks para matchups interesantes
+    const topDeckNames = deckNames.slice(0, 3);
+    
+    return [
+        {
+            deck1: topDeckNames[0],
+            deck2: topDeckNames[1],
+            result: 'Matchup clave del formato',
+            advantage: decks[topDeckNames[0]].tier === 'Tier 1' ? 'favorable' : 'even',
+            advantageText: decks[topDeckNames[0]].tier === 'Tier 1' ? 'Favorable' : 'Equilibrado'
+        },
+        {
+            deck1: topDeckNames[1],
+            deck2: topDeckNames[2],
+            result: 'Matchup estratégico',
+            advantage: decks[topDeckNames[1]].type === 'Control' ? 'favorable' : 'even',
+            advantageText: 'Importante para side deck'
+        },
+        {
+            deck1: topDeckNames[0],
+            deck2: topDeckNames[2],
+            result: 'Matchup de control vs combo',
+            advantage: 'even',
+            advantageText: 'Muy equilibrado'
+        }
+    ];
+}
+
+function renderKeyMatchups(matchups) {
+    if (matchups.length === 0) {
+        document.getElementById('key-matchups').querySelector('.matchup-matrix').innerHTML = `
+            <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-info-circle"></i>
+                <p>Se necesitan más decks para generar matchups</p>
+            </div>
+        `;
+        return;
+    }
+    
+    document.getElementById('key-matchups').querySelector('.matchup-matrix').innerHTML = `
+        ${matchups.map(matchup => `
+            <div class="matchup-item">
+                <div class="matchup-decks">
+                    <span style="color: var(--accent-cyan);">${matchup.deck1}</span>
+                    <i class="fas fa-vs"></i>
+                    <span style="color: var(--accent-magenta);">${matchup.deck2}</span>
+                </div>
+                <div class="matchup-result">${matchup.result}</div>
+                <div class="matchup-advantage ${matchup.advantage}">${matchup.advantageText}</div>
+            </div>
+        `).join('')}
+    `;
+}
+
+function renderTypeDistribution(deckTypes) {
+    const typeColors = {
+        'Combo': '#70d870',
+        'Control': '#70c1d9',
+        'Aggro': '#d87070',
+        'Mid-Range': '#d8d870'
+    };
+    
+    const total = Object.values(deckTypes).reduce((a, b) => a + b, 0);
+    let cumulative = 0;
+    
+    // Generar gráfico de torta
+    const svgHTML = Object.entries(deckTypes).map(([type, count], index) => {
+        const percentage = (count / total) * 100;
+        const offset = cumulative;
+        cumulative += percentage;
+        
+        const strokeDasharray = `${percentage} 100`;
+        const strokeDashoffset = 100 - offset;
+        
+        return `
+            <circle class="pie-segment" 
+                    r="16" 
+                    cx="16" 
+                    cy="16" 
+                    stroke="${typeColors[type] || '#cccccc'}" 
+                    stroke-dasharray="${strokeDasharray}" 
+                    stroke-dashoffset="${strokeDashoffset}">
+            </circle>
+        `;
+    }).join('');
+    
+    // Generar leyenda
+    const legendHTML = Object.entries(deckTypes).map(([type, count]) => {
+        const percentage = Math.round((count / total) * 100);
+        return `
+            <div class="pie-legend-item">
+                <div class="pie-color" style="background-color: ${typeColors[type] || '#cccccc'}"></div>
+                <span>${type}</span>
+                <span style="margin-left: auto; font-weight: bold;">${percentage}%</span>
+            </div>
+        `;
+    }).join('');
+    
+    document.getElementById('type-distribution').innerHTML = `
+        <div class="pie-chart-container">
+            <svg class="pie-chart-svg" viewBox="0 0 32 32">
+                ${svgHTML}
+            </svg>
+        </div>
+        <div class="pie-legend">
+            ${legendHTML}
+        </div>
+    `;
+}
+
+function analyzeCommonWeaknesses() {
     const weaknesses = {};
     Object.values(decks).forEach(deck => {
         deck.weaknesses?.forEach(weakness => {
@@ -1085,20 +1299,193 @@ function loadMetaAnalysis() {
         });
     });
     
-    const sortedWeaknesses = Object.entries(weaknesses)
-        .sort((a, b) => b[1] - a[1])
+    return Object.entries(weaknesses)
+        .map(([name, count]) => ({name, count}))
+        .sort((a, b) => b.count - a.count)
         .slice(0, 5);
+}
+
+function renderWeaknessAnalysis(weaknesses) {
+    if (weaknesses.length === 0) {
+        document.getElementById('weakness-analysis').querySelector('.weakness-analysis').innerHTML = `
+            <div style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-check-circle"></i>
+                <p>No se encontraron debilidades comunes significativas</p>
+            </div>
+        `;
+        return;
+    }
     
-    document.getElementById('most-common-weak').innerHTML = `
-        <ul>
-            ${sortedWeaknesses.map(([weakness, count]) => `
-                <li>
-                    ${weakness}
-                    <span class="weakness-count">${count} decks</span>
-                </li>
-            `).join('')}
-        </ul>
+    document.getElementById('weakness-analysis').querySelector('.weakness-analysis').innerHTML = `
+        ${weaknesses.map(weakness => `
+            <div class="weakness-item">
+                <i class="fas fa-exclamation-circle" style="color: var(--accent-red);"></i>
+                <div class="weakness-name">${weakness.name}</div>
+                <div class="weakness-impact">${weakness.count} decks</div>
+            </div>
+        `).join('')}
     `;
+}
+
+function calculatePerformanceByType() {
+    const typeScores = {
+        'Combo': [],
+        'Control': [],
+        'Aggro': [],
+        'Mid-Range': []
+    };
+    
+    Object.keys(decks).forEach(deckName => {
+        const deck = decks[deckName];
+        const extra = additional[deckName] || {};
+        const going = extra.going || {first: 3, second: 3};
+        const score = calculateDeckScore(deck, going);
+        
+        if (typeScores[deck.type]) {
+            typeScores[deck.type].push(score);
+        }
+    });
+    
+    const result = {};
+    Object.keys(typeScores).forEach(type => {
+        if (typeScores[type].length > 0) {
+            result[type.toLowerCase()] = Math.round(
+                typeScores[type].reduce((a, b) => a + b, 0) / typeScores[type].length
+            );
+        } else {
+            result[type.toLowerCase()] = 50;
+        }
+    });
+    
+    return result;
+}
+
+function renderPerformanceStats(performanceStats) {
+    document.getElementById('combo-performance').textContent = `${performanceStats.combo}%`;
+    document.getElementById('control-performance').textContent = `${performanceStats.control}%`;
+    document.getElementById('aggro-performance').textContent = `${performanceStats.aggro}%`;
+    
+    // Crear gráfico de barras simple
+    const maxValue = Math.max(...Object.values(performanceStats));
+    const chartHTML = Object.entries(performanceStats).map(([type, value]) => {
+        const height = (value / maxValue) * 100;
+        const colors = {
+            'combo': '#70d870',
+            'control': '#70c1d9',
+            'aggro': '#d87070',
+            'mid-range': '#d8d870'
+        };
+        
+        return `
+            <div class="chart-bar" style="
+                width: 20%;
+                height: ${height}%;
+                background-color: ${colors[type] || '#cccccc'};
+                left: ${Object.keys(performanceStats).indexOf(type) * 25}%;
+            "></div>
+        `;
+    }).join('');
+    
+    document.getElementById('performance-chart').innerHTML = chartHTML;
+}
+
+function renderMetaSideDeck() {
+    // Cartas más usadas en el meta actual
+    const metaCards = [
+        { name: 'Ash Blossom & Joyous Spring', usage: 94, type: 'handtrap' },
+        { name: 'Infinite Impermanence', usage: 82, type: 'handtrap' },
+        { name: 'Nibiru, the Primal Being', usage: 76, type: 'board-breaker' },
+        { name: 'Dark Ruler No More', usage: 68, type: 'removal' }
+    ];
+    
+    const typeIcons = {
+        'handtrap': 'fa-hand-paper',
+        'board-breaker': 'fa-hammer',
+        'floodgate': 'fa-shield-alt',
+        'removal': 'fa-ban'
+    };
+    
+    const typeColors = {
+        'handtrap': 'var(--accent-green)',
+        'board-breaker': 'var(--accent-red)',
+        'floodgate': 'var(--accent-cyan)',
+        'removal': 'var(--accent-yellow)'
+    };
+    
+    document.getElementById('meta-side-deck').innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            ${metaCards.map(card => `
+                <div style="display: flex; align-items: center; gap: 12px; padding: 15px; background: var(--bg-secondary); border-radius: 12px;">
+                    <i class="fas ${typeIcons[card.type]}" style="color: ${typeColors[card.type]}; font-size: 1.2rem;"></i>
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold; color: var(--text-primary);">${card.name}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">${card.type.replace('-', ' ').toUpperCase()}</div>
+                    </div>
+                    <div style="font-weight: bold; color: var(--accent-cyan);">${card.usage}%</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderGeneralStats() {
+    // Calcular estadísticas generales
+    let totalGoingFirst = 0;
+    let totalGoingSecond = 0;
+    let goingCount = 0;
+    
+    Object.keys(decks).forEach(deckName => {
+        const extra = additional[deckName] || {};
+        const going = extra.going;
+        if (going) {
+            totalGoingFirst += going.first || 0;
+            totalGoingSecond += going.second || 0;
+            goingCount++;
+        }
+    });
+    
+    const avgGoingFirst = goingCount > 0 ? (totalGoingFirst / goingCount).toFixed(1) : 0;
+    const avgGoingSecond = goingCount > 0 ? (totalGoingSecond / goingCount).toFixed(1) : 0;
+    
+    // Tipo más común
+    const typeCounts = {};
+    Object.values(decks).forEach(deck => {
+        typeCounts[deck.type] = (typeCounts[deck.type] || 0) + 1;
+    });
+    
+    const mostCommonType = Object.entries(typeCounts).reduce((a, b) => a[1] > b[1] ? a : b, ['-', 0])[0];
+    
+    document.getElementById('avg-going-first').textContent = `${avgGoingFirst}/5`;
+    document.getElementById('avg-going-second').textContent = `${avgGoingSecond}/5`;
+    document.getElementById('most-common-type').textContent = mostCommonType;
+}
+
+function calculateDeckScore(deck, going) {
+    const tierScore = deck.tier === 'Tier 1' ? 85 : deck.tier === 'Tier 2' ? 70 : 55;
+    const difficultyScore = 100 - (deck.difficulty * 7);
+    const goingScore = ((going.first + going.second) / 2) * 15;
+    return Math.round((tierScore + difficultyScore + goingScore) / 3);
+}
+
+function animateElements() {
+    setTimeout(() => {
+        document.querySelectorAll('.tier-dist-fill, .chart-bar').forEach(fill => {
+            const width = fill.style.width;
+            fill.style.width = '0';
+            setTimeout(() => {
+                fill.style.width = width;
+            }, 100);
+        });
+        
+        // Animar círculos del gráfico de torta
+        document.querySelectorAll('.pie-segment').forEach((segment, index) => {
+            segment.style.opacity = '0';
+            setTimeout(() => {
+                segment.style.opacity = '1';
+                segment.style.transition = 'opacity 0.5s ease';
+            }, index * 100);
+        });
+    }, 300);
 }
 
 // Aplicar filtros

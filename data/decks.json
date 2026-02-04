@@ -11,21 +11,21 @@
     "extra_deck": "15 cartas"
   },
   "Dracotail": {
-    "type": "Midrange",
+    "type": "Mid-Range",
     "tier": "Tier 1",
     "difficulty": 6,
     "weaknesses": ["Nibiru", "Droll & Lock Bird", "Dimension Shifter"],
     "image": "dracotail.jpg",
-    "description": "Deck de midrange que utiliza fusiones para devolver a la mano y destruir.",
+    "description": "Deck de Mid-Range que utiliza fusiones para devolver a la mano y destruir.",
     "archetype": "Dracotail",
     "recommended_size": "17 a 20 cartas",
     "extra_deck": "6 a 8 cartas"
   },
   "Yummy": {
-    "type": "Midrange",
-    "tier": "Tier 1",
-    "difficulty": 4,
-    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "type": "Control",
+    "tier": "Tier 2",
+    "difficulty": 7,
+    "weaknesses": ["Raigeki", "Forbidden Droplet", "Nibiru"],
     "image": "Yummy.jpg",
     "description": "Deck que hace sincronia con links 1.",
     "archetype": "Yummy",
@@ -33,10 +33,10 @@
     "extra_deck": "6 a 8 cartas"
   },
   "K9": {
-    "type": "Midrange",
-    "tier": "Tier 1",
-    "difficulty": 4,
-    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "type": "Mid-Range",
+    "tier": "Tier 2",
+    "difficulty": 5,
+    "weaknesses": ["Raigeki", "Mulcharmy Fuwalos", "Mulcharmy Purulia"],
     "image": "K9.jpg",
     "description": "Pueden hacer XYZ en turno 0, en caso de que el oponente active efecto en mano.",
     "archetype": "K9",
@@ -44,7 +44,7 @@
     "extra_deck": "6 a 8 cartas"
   },
   "Kewl Tune": {
-    "type": "Midrange",
+    "type": "Mid-Range",
     "tier": "Tier 2",
     "difficulty": 4,
     "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
@@ -55,10 +55,10 @@
     "extra_deck": "6 a 8 cartas"
   },
   "Hecahands": {
-    "type": "Midrange",
+    "type": "Control",
     "tier": "Tier 3",
     "difficulty": 4,
-    "weaknesses": ["Nibiru", "Ghost Ogre", "Raigeki"],
+    "weaknesses": ["Droll & Lock Bird", "Mulcharmy Fuwalos", "Nibiru"],
     "image": "Hecahands.jpg",
     "description": "???",
     "archetype": "Hecahands",
@@ -77,18 +77,18 @@
     "extra_deck": "15 cartas"
   },
   "Branded Despia": {
-    "type": "Control",
+    "type": "Mid-Range",
     "tier": "Tier 1",
     "difficulty": 9,
-    "weaknesses": ["Dimensional Barrier", "Anti-Spell Fragrance", "Artifact Lancea"],
+    "weaknesses": ["Non-Fusion Area", "Anti-Spell Fragrance", "Artifact Lancea", "Bystials"],
     "image": "branded-despia.jpg",
     "description": "Deck de fusión que controla el campo mientras genera ventaja de cartas.",
     "archetype": "Branded/Despia",
-    "recommended_size": "40-45 cartas",
+    "recommended_size": "28-32 cartas",
     "extra_deck": "15 cartas"
   },
   "Swordsoul": {
-    "type": "Midrange",
+    "type": "Mid-Range",
     "tier": "Tier 2",
     "difficulty": 5,
     "weaknesses": ["Skill Drain", "Summon Limit", "Gozen Match"],

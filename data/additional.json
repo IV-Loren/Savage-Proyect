@@ -35,14 +35,14 @@
   },
   "Yummy": {
     "engine": "Synchro y Link",
-    "going": {"first": 4, "second": 3},
+    "going": {"first": 4, "second": 2},
     "stats": {
-      "attack": 9, "control": 9, "consistency": 9, 
-      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+      "attack": 9, "control": 8, "consistency": 10, 
+      "board_break": 8, "versatility": 7, "resilience": 8, "recovery": 7
     },
     "additional": {
-      "draw": 1, "control": 5, "search": 5, "burn": 0,
-      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+      "draw": 1, "control": 4, "search": 4, "burn": 0,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 4
     },
     "tips": [
       "Recuerda que el efecto de snatchy es una vez por CADENA.",
@@ -52,14 +52,14 @@
   },
   "K9": {
     "engine": "XYZ",
-    "going": {"first": 4, "second": 3},
+    "going": {"first": 4, "second": 4},
     "stats": {
-      "attack": 9, "control": 9, "consistency": 9, 
-      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+      "attack": 9, "control": 8, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 9
     },
     "additional": {
-      "draw": 1, "control": 5, "search": 5, "burn": 0,
-      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+      "draw": 2, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 4
     },
     "tips": [
       "Recuerda que el efecto de snatchy es una vez por CADENA.",
@@ -86,14 +86,14 @@
   },
   "Hecahands": {
     "engine": "Fusión",
-    "going": {"first": 4, "second": 3},
+    "going": {"first": 3, "second": 2},
     "stats": {
-      "attack": 9, "control": 9, "consistency": 9, 
-      "board_break": 8, "versatility": 8, "resilience": 9, "recovery": 10
+      "attack": 8, "control": 7, "consistency": 7, 
+      "board_break": 7, "versatility": 7, "resilience": 8, "recovery": 7
     },
     "additional": {
-      "draw": 1, "control": 5, "search": 5, "burn": 0,
-      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
+      "draw": 2, "control": 4, "search": 4, "burn": 0,
+      "beatdown": 4, "stamina": 4, "comeback": 3, "swarm": 3
     },
     "tips": [
       "...",
@@ -120,14 +120,14 @@
   },
   "Branded Despia": {
     "engine": "Fusion Control",
-    "going": {"first": 4, "second": 3},
+    "going": {"first": 5, "second": 4},
     "stats": {
-      "attack": 7, "control": 9, "consistency": 8, 
-      "board_break": 6, "versatility": 7, "resilience": 8, "recovery": 7
+      "attack": 9, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 10, "resilience": 9, "recovery": 9
     },
     "additional": {
-      "draw": 3, "control": 5, "search": 4, "burn": 2,
-      "beatdown": 3, "stamina": 4, "comeback": 4, "swarm": 3
+      "draw": 1, "control": 5, "search": 5, "burn": 1,
+      "beatdown": 5, "stamina": 5, "comeback": 5, "swarm": 5
     },
     "tips": [
       "Usa Branded Fusion como tu jugada principal",
@@ -139,12 +139,12 @@
     "engine": "Synchro Midrange",
     "going": {"first": 4, "second": 4},
     "stats": {
-      "attack": 8, "control": 7, "consistency": 8, 
-      "board_break": 7, "versatility": 7, "resilience": 7, "recovery": 6
+      "attack": 9, "control": 8, "consistency": 8, 
+      "board_break": 7, "versatility": 9, "resilience": 7, "recovery": 8
     },
     "additional": {
-      "draw": 3, "control": 4, "search": 4, "burn": 2,
-      "beatdown": 4, "stamina": 4, "comeback": 3, "swarm": 4
+      "draw": 1, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 5, "comeback": 4, "swarm": 4
     },
     "tips": [
       "Aprende las diferentes líneas de Mo Ye",

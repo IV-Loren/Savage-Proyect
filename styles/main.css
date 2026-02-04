@@ -1,25 +1,32 @@
-/* Variables CSS base */
+/* Logo. */
+.logo-image {
+    height: 70px;
+    width: auto;
+    margin-right: 0px;
+}
+
+/* Tema básico basado en Savage. */
 :root {
-    --bg-primary: rgba(255, 245, 250, 0.95);
-    --bg-secondary: rgba(255, 255, 255, 0.7);
-    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-primary: rgba(228, 225, 226, 0.95);
+    --bg-secondary: rgba(223, 223, 223, 0.7);
+    --bg-card: rgba(255, 254, 254, 0.85);
     --bg-sidebar: rgba(255, 255, 255, 0.8);
     --bg-footer: rgba(255, 255, 255, 0.9);
-    --text-primary: #5a4a72;
+    --text-primary: #514144;
     --text-secondary: #8a7ca3;
     --accent-cyan: #70c1d9;
-    --accent-magenta: #d870d8;
-    --accent-green: #70d870;
-    --accent-yellow: #d8d870;
+    --accent-magenta: #3dc89a;
+    --accent-green: #5e8089;
+    --accent-yellow: #ab890d;
     --accent-red: #d87070;
-    --pastel-pink: #ffcce6;
-    --pastel-blue: #cce6ff;
-    --pastel-purple: #e6ccff;
-    --pastel-green: #ccffdd;
-    --border-color: rgba(90, 74, 114, 0.1);
+    --pastel-pink: #bbfeec;
+    --pastel-blue: #5de6ca;
+    --pastel-purple: #1f5f8e1e;
+    --pastel-green: #2b90ee;
+    --border-color: rgba(0, 76, 88, 0.459);
     --shadow: rgba(90, 74, 114, 0.1);
     --shadow-hover: rgba(90, 74, 114, 0.2);
-    --transition-speed: 0.3s;
+    --transition-speed: 0.4s;
 }
 
 /* Modo oscuro */
@@ -34,6 +41,7 @@
     --border-color: rgba(200, 200, 255, 0.1);
     --shadow: rgba(0, 0, 0, 0.3);
     --shadow-hover: rgba(0, 0, 0, 0.5);
+    --accent-green: #72a58c;    
 }
 
 * {
@@ -2456,4 +2464,474 @@ footer p {
 
 .comparator-deck:nth-child(3) {
     animation-delay: 0.2s;
+}
+
+/* ============================================
+   META ANÁLISIS PROFESIONAL - REDISEÑO COMPLETO
+   ============================================ */
+
+/* Header del Meta Análisis */
+.meta-analysis-header {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 2px solid var(--border-color);
+}
+
+.meta-analysis-header h2 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meta-header-stats {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.meta-stat {
+    text-align: center;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.meta-stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    margin-bottom: 5px;
+}
+
+.meta-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Grid de análisis mejorado */
+.meta-analysis-grid-pro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Tarjetas de análisis premium */
+.analysis-card-pro {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.analysis-card-pro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--shadow-hover);
+    border-color: var(--accent-cyan);
+}
+
+.analysis-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.analysis-card-header h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.analysis-card-header h3 i {
+    color: var(--accent-cyan);
+}
+
+.analysis-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Contenido de análisis */
+.analysis-content-pro {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Listas profesionales */
+.analysis-list {
+    list-style: none;
+    padding: 0;
+}
+
+.analysis-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-cyan);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.analysis-list li:hover {
+    transform: translateX(5px);
+    background: linear-gradient(90deg, var(--pastel-blue), var(--bg-secondary));
+}
+
+.list-rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.list-content {
+    flex: 1;
+}
+
+.list-content .deck-name {
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+}
+
+.list-content .deck-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Distribución de Tier mejorada */
+.tier-distribution-pro {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tier-dist-item-pro {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.tier-dist-header-pro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tier-dist-name {
+    font-weight: bold;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tier-dist-count {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+}
+
+.tier-dist-bar {
+    height: 12px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.tier-dist-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1s ease;
+}
+
+.tier-dist-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Carta de tendencias */
+.trend-card {
+    background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid var(--border-color);
+}
+
+.trend-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trend-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.trend-indicator.up {
+    color: #70d870;
+}
+
+.trend-indicator.down {
+    color: #d87070;
+}
+
+.trend-indicator.neutral {
+    color: #d8d870;
+}
+
+/* Matriz de matchups */
+.matchup-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.matchup-item {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.matchup-decks {
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.matchup-result {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.matchup-advantage {
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.matchup-advantage.favorable {
+    background: rgba(112, 216, 112, 0.2);
+    color: #70d870;
+    border: 1px solid #70d870;
+}
+
+.matchup-advantage.even {
+    background: rgba(216, 216, 112, 0.2);
+    color: #d8d870;
+    border: 1px solid #d8d870;
+}
+
+.matchup-advantage.unfavorable {
+    background: rgba(216, 112, 112, 0.2);
+    color: #d87070;
+    border: 1px solid #d87070;
+}
+
+/* Estadísticas de tipo */
+.type-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.type-stat {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.type-stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    margin-bottom: 5px;
+}
+
+.type-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Análisis de debilidades */
+.weakness-analysis {
+    margin-top: 20px;
+}
+
+.weakness-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.weakness-item:hover {
+    background: linear-gradient(90deg, var(--pastel-blue), var(--bg-secondary));
+}
+
+.weakness-name {
+    flex: 1;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.weakness-impact {
+    width: 80px;
+    text-align: right;
+    font-weight: bold;
+    color: var(--accent-cyan);
+}
+
+/* Mini gráficos */
+.mini-chart {
+    width: 100%;
+    height: 60px;
+    position: relative;
+    margin: 15px 0;
+}
+
+.chart-bar {
+    position: absolute;
+    bottom: 0;
+    border-radius: 4px 4px 0 0;
+    animation: growBar 1s ease-out;
+}
+
+@keyframes growBar {
+    from { height: 0; }
+    to { height: var(--chart-height); }
+}
+
+/* Gráfico de torta */
+.pie-chart-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.pie-chart-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.pie-segment {
+    fill: none;
+    stroke-width: 32;
+    stroke-linecap: round;
+}
+
+.pie-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.pie-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.pie-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .meta-analysis-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .meta-header-stats {
+        justify-content: center;
+    }
+    
+    .meta-analysis-grid-pro {
+        grid-template-columns: 1fr;
+    }
+    
+    .matchup-matrix {
+        grid-template-columns: 1fr;
+    }
+    
+    .type-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

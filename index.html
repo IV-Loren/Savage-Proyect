@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/themes.css">
+    <link rel="icon" href="\assets\images\icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="\assets\images\icon.ico" type="image/x-icon">
 </head>
 <body data-theme="default" data-mode="light">
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-dragon"></i>
+                <img src="\assets\images\icon.png" alt="YGO! Savage Project Logo" class="logo-image">
                 <h1>YGO! Savage Project</h1>
             </div>
             <div class="theme-selector">
@@ -193,34 +195,198 @@
                 
                 <!-- Meta Análisis -->
                 <section id="meta-analysis" class="view-section">
-                    <div class="view-header">
-                        <h2>Meta Análisis</h2>
-                        <div class="view-actions">
-                            <button id="refresh-analysis" class="action-btn">
-                                <i class="fas fa-sync-alt"></i> Actualizar
-                            </button>
+                    <div class="meta-analysis-header">
+                        <h2><i class="fas fa-chart-network"></i> Análisis del Metagame</h2>
+                        <div class="meta-header-stats">
+                            <div class="meta-stat">
+                                <div class="meta-stat-value" id="total-decks-count">0</div>
+                                <div class="meta-stat-label">Decks Activos</div>
+                            </div>
+                            <div class="meta-stat">
+                                <div class="meta-stat-value" id="meta-diversity">0%</div>
+                                <div class="meta-stat-label">Diversidad</div>
+                            </div>
+                            <div class="meta-stat">
+                                <div class="meta-stat-value" id="avg-difficulty">0/10</div>
+                                <div class="meta-stat-label">Dificultad Promedio</div>
+                            </div>
+                            <div class="meta-stat">
+                                <div class="meta-stat-value" id="dominant-tier">-</div>
+                                <div class="meta-stat-label">Tier Dominante</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="meta-analysis-grid">
-                        <div class="analysis-card">
-                            <h3><i class="fas fa-chart-bar"></i> Decks Más Jugados</h3>
-                            <div id="most-played-decks" class="analysis-content">
-                                <!-- Lista de decks más jugados -->
+                    <div class="view-actions" style="margin-bottom: 25px;">
+                        <button id="refresh-analysis" class="action-btn">
+                            <i class="fas fa-sync-alt"></i> Actualizar Análisis
+                        </button>
+                    </div>
+                    
+                    <div class="meta-analysis-grid-pro">
+                        <!-- Distribución por Tier -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-trophy"></i> Distribución por Tier</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                            </div>
+                            <div id="tier-distribution-pro" class="analysis-content-pro">
+                                <!-- Se cargará dinámicamente -->
+                            </div>
+                            <div class="trend-card">
+                                <h4><i class="fas fa-chart-line"></i> Evolución del Meta</h4>
+                                <div class="trend-indicator up">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>Competitividad en aumento</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 10px;">
+                                    Los decks están siendo más optimizados y la brecha entre tiers se está reduciendo.
+                                </p>
                             </div>
                         </div>
                         
-                        <div class="analysis-card">
-                            <h3><i class="fas fa-trophy"></i> Tiers del Metagame</h3>
-                            <div id="tier-distribution" class="analysis-content">
-                                <!-- Distribución de tiers -->
+                        <!-- Top 5 Decks del Meta -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-crown"></i> Top 5 Decks del Meta</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                            </div>
+                            <div id="top-decks-meta" class="analysis-content-pro">
+                                <ol class="analysis-list">
+                                    <!-- Se cargará dinámicamente -->
+                                </ol>
+                            </div>
+                            <div class="type-stats">
+                                <div class="type-stat">
+                                    <div class="type-stat-value" id="top-tier-count">0</div>
+                                    <div class="type-stat-label">Tier 1</div>
+                                </div>
+                                <div class="type-stat">
+                                    <div class="type-stat-value" id="avg-win-rate">0%</div>
+                                    <div class="type-stat-label">Win Rate Promedio</div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="analysis-card">
-                            <h3><i class="fas fa-shield-alt"></i> Debilidades Comunes</h3>
-                            <div id="most-common-weak" class="analysis-content">
-                                <!-- Lista de debilidades más comunes -->
+                        <!-- Matchups Clave -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-balance-scale"></i> Matchups Clave</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-chess"></i>
+                                </div>
+                            </div>
+                            <div id="key-matchups" class="analysis-content-pro">
+                                <div class="matchup-matrix">
+                                    <!-- Se cargará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Distribución por Tipo -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-layer-group"></i> Tipos de Decks</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-shapes"></i>
+                                </div>
+                            </div>
+                            <div id="type-distribution" class="analysis-content-pro">
+                                <div class="pie-chart-container">
+                                    <svg class="pie-chart-svg" viewBox="0 0 32 32">
+                                        <!-- Se generará dinámicamente -->
+                                    </svg>
+                                </div>
+                                <div class="pie-legend">
+                                    <!-- Se generará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Análisis de Debilidades -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-shield-alt"></i> Debilidades Comunes</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                            </div>
+                            <div id="weakness-analysis" class="analysis-content-pro">
+                                <div class="weakness-analysis">
+                                    <!-- Se cargará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Performance por Tipo -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-chart-line"></i> Performance por Tipo</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                            </div>
+                            <div id="performance-stats" class="analysis-content-pro">
+                                <div class="mini-chart" id="performance-chart">
+                                    <!-- Gráfico de performance -->
+                                </div>
+                            </div>
+                            <div class="type-stats">
+                                <div class="type-stat">
+                                    <div class="type-stat-value" id="combo-performance">0%</div>
+                                    <div class="type-stat-label">Combo</div>
+                                </div>
+                                <div class="type-stat">
+                                    <div class="type-stat-value" id="control-performance">0%</div>
+                                    <div class="type-stat-label">Control</div>
+                                </div>
+                                <div class="type-stat">
+                                    <div class="type-stat-value" id="aggro-performance">0%</div>
+                                    <div class="type-stat-label">Aggro</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Side Deck Recomendado -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-exchange-alt"></i> Side Deck Recomendado</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                            </div>
+                            <div id="meta-side-deck" class="analysis-content-pro">
+                                <!-- Se cargará dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- Estadísticas Generales -->
+                        <div class="analysis-card-pro">
+                            <div class="analysis-card-header">
+                                <h3><i class="fas fa-chart-bar"></i> Estadísticas Generales</h3>
+                                <div class="analysis-card-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                            </div>
+                            <div id="general-stats" class="analysis-content-pro">
+                                <div class="type-stats">
+                                    <div class="type-stat">
+                                        <div class="type-stat-value" id="avg-going-first">0/5</div>
+                                        <div class="type-stat-label">Going First</div>
+                                    </div>
+                                    <div class="type-stat">
+                                        <div class="type-stat-value" id="avg-going-second">0/5</div>
+                                        <div class="type-stat-label">Going Second</div>
+                                    </div>
+                                    <div class="type-stat">
+                                        <div class="type-stat-value" id="most-common-type">-</div>
+                                        <div class="type-stat-label">Tipo Más Común</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
