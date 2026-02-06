@@ -1,0 +1,62 @@
+{
+  "Dragon Link": {
+    "Ash Blossom": "Medium",
+    "Droll & Lock Bird": "High",
+    "Nibiru": "High",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "Low",
+    "Bystials": "High",
+    "Dark Ruler No More": "Lethal",
+    "Forbidden Droplet": "High",
+    "Super Polymerization": "Low",
+    "Ghost Ogre": "Low"
+  },
+  "Dracotail": {
+    "Ash Blossom": "Low",
+    "Droll & Lock Bird": "High",
+    "Nibiru": "Medium",
+    "Infinite Impermanence": "Low",
+    "Ghost Belle": "Nulo",
+    "Bystials": "Medium",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "Medium",
+    "Super Polymerization": "Low",
+    "Ghost Ogre": "Low"
+  },
+  "Tearlaments": {
+    "Ash Blossom": "High",
+    "Droll & Lock Bird": "Low",
+    "Nibiru": "Medium",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "High",
+    "Bystials": "Lethal",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "Medium",
+    "Super Polymerization": "High",
+    "Ghost Ogre": "Medium"
+  },
+  "Branded Despia": {
+    "Ash Blossom": "High",
+    "Droll & Lock Bird": "Low",
+    "Nibiru": "Low",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "Medium",
+    "Bystials": "High",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "High",
+    "Super Polymerization": "High",
+    "Ghost Ogre": "Low"
+  },
+  "Spright": {
+    "Ash Blossom": "Medium",
+    "Droll & Lock Bird": "Lethal",
+    "Nibiru": "Lethal",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "Low",
+    "Bystials": "Low",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "High",
+    "Super Polymerization": "Medium",
+    "Ghost Ogre": "Medium"
+  }
+}

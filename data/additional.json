@@ -237,6 +237,57 @@
       "No olvides los efectos de búsqueda de Jet y Carrot"
     ]
   },
+  "Artmage": {
+    "engine": "xdx",
+    "going": {"first": 5, "second": 4},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Memento": {
+    "engine": "Cemetery Combo",
+    "going": {"first": 5, "second": 4},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Maliss": {
+    "engine": "Level/Link 3 Combo",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
   "Labrynth": {
     "engine": "Trap Control",
     "going": {"first": 4, "second": 2},

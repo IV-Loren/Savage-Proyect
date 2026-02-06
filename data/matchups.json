@@ -10,73 +10,51 @@
   "Tearlaments": {
     "side_in": ["D.D. Crow", "Necrovalley", "Gravekeepers", "Ash Blossom", "Dimension Shifter"],
     "matchups": {
-      "Dragon Link": "Favorable",
-      "Branded Despia": "Equilibrado",
-      "Spright": "Favorable"
     }
   },
   "Branded Despia": {
     "side_in": ["Dimensional Barrier", "Anti-Spell Fragrance", "Artifact Lancea", "D.D. Crow"],
     "matchups": {
-      "Tearlaments": "Equilibrado",
-      "Swordsoul": "Favorable",
-      "Spright": "Desfavorable"
     }
   },
   "Swordsoul": {
     "side_in": ["Dark Ruler No More", "Forbidden Droplet", "Nibiru", "D.D. Crow"],
     "matchups": {
-      "Branded Despia": "Desfavorable",
-      "Floowandereeze": "Favorable",
-      "Spright": "Equilibrado"
     }
   },
   "Floowandereeze": {
     "side_in": ["Maxx 'C'", "Droll & Lock Bird", "Ash Blossom", "Nibiru"],
     "matchups": {
-      "Swordsoul": "Desfavorable",
-      "Marincess": "Favorable",
-      "Dark Magician": "Favorable"
     }
   },
   "Marincess": {
     "side_in": ["Kaijus", "Sphere Mode", "Dark Ruler No More", "Forbidden Droplet"],
     "matchups": {
-      "Floowandereeze": "Desfavorable",
-      "Sky Striker": "Equilibrado",
-      "Spright": "Desfavorable"
     }
   },
   "Sky Striker": {
     "side_in": ["Imperial Order", "Mystic Mine", "Anti-Spell Fragrance", "Cosmic Cyclone"],
     "matchups": {
-      "Marincess": "Equilibrado",
-      "Dark Magician": "Favorable",
-      "Labrynth": "Desfavorable"
     }
   },
   "Dark Magician": {
     "side_in": ["Backrow removal", "Spell negation", "Grave disruption", "Cosmic Cyclone"],
     "matchups": {
-      "Sky Striker": "Desfavorable",
-      "Labrynth": "Equilibrado",
-      "Floowandereeze": "Desfavorable"
     }
   },
   "Spright": {
     "side_in": ["Nibiru", "Droll & Lock Bird", "Skill Drain", "Gozen Match"],
     "matchups": {
-      "Branded Despia": "Favorable",
-      "Marincess": "Favorable",
-      "Tearlaments": "Desfavorable"
     }
   },
+  "Maliss": {
+    "side_in": ["Artifact Lancea", "Droll & Lock Bird"],
+    "matchups": {
+    }
+  },  
   "Labrynth": {
     "side_in": ["Backrow removal", "Royal Decree", "Evenly Matched", "Cosmic Cyclone"],
     "matchups": {
-      "Sky Striker": "Favorable",
-      "Dark Magician": "Equilibrado",
-      "Branded Despia": "Desfavorable"
     }
   }
 }

@@ -1,25 +1,26 @@
+// data-loader.js - VERSIÓN CORREGIDA
 // Cargar todos los datos
 async function loadAllData() {
     try {
-        // Cargar datos de decks
+        // Cargar datos de decks - MODIFICAR A window.decks
         const decksResponse = await fetch('data/decks.json');
-        decks = await decksResponse.json();
+        window.decks = await decksResponse.json(); // Cambiado
         
-        // Cargar matchups
+        // Cargar matchups - MODIFICAR A window.matchups
         const matchupsResponse = await fetch('data/matchups.json');
-        matchups = await matchupsResponse.json();
+        window.matchups = await matchupsResponse.json(); // Cambiado
         
         // Cargar datos adicionales
         const additionalResponse = await fetch('data/additional.json');
-        additional = await additionalResponse.json();
+        window.additional = await additionalResponse.json(); // Cambiado
         
         // Cargar side deck cards
-        const sidedeckResponse = await fetch('data/sidedeck-cards.json');
-        sidedeckCards = await sidedeckResponse.json();
+        const sidedeckResponse = await fetch('data/sidedeck.json'); // Cambiado a sidedeck.json
+        window.sidedeckCards = await sidedeckResponse.json(); // Cambiado
         
         // Cargar handtraps
         const handtrapsResponse = await fetch('data/handtraps.json');
-        handtraps = await handtrapsResponse.json();
+        window.handtraps = await handtrapsResponse.json(); // Cambiado
         
         console.log('Datos cargados exitosamente');
     } catch (error) {
@@ -31,7 +32,7 @@ async function loadAllData() {
 
 // Datos de ejemplo (fallback)
 function loadExampleData() {
-    decks = {
+    window.decks = { // Cambiado a window.decks
         "Dragon Link": {
             "type": "Combo",
             "tier": "Tier 1",
@@ -42,7 +43,7 @@ function loadExampleData() {
         // ... más decks
     };
     
-    sidedeckCards = [
+    window.sidedeckCards = [ // Cambiado a window.sidedeckCards
         {
             "name": "Ash Blossom & Joyous Spring",
             "type": "handtrap",
@@ -53,7 +54,7 @@ function loadExampleData() {
         // ... más cartas
     ];
     
-    handtraps = [
+    window.handtraps = [ // Cambiado a window.handtraps
         {
             "name": "Ash Blossom & Joyous Spring",
             "tier": "S",

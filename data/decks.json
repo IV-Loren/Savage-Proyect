@@ -1,7 +1,7 @@
 {
   "Dragon Link": {
     "type": "Combo",
-    "tier": "Tier 1",
+    "tier": "Rogue",
     "difficulty": 9,
     "weaknesses": ["Nibiru", "Droll & Lock Bird", "Dimension Shifter"],
     "image": "dragon-link.jpg",
@@ -56,7 +56,7 @@
   },
   "Hecahands": {
     "type": "Control",
-    "tier": "Tier 3",
+    "tier": "Rogue",
     "difficulty": 4,
     "weaknesses": ["Droll & Lock Bird", "Mulcharmy Fuwalos", "Nibiru"],
     "image": "Hecahands.jpg",
@@ -67,7 +67,7 @@
   },
   "Tearlaments": {
     "type": "Combo",
-    "tier": "Tier 3",
+    "tier": "Fun",
     "difficulty": 9,
     "weaknesses": ["D.D. Crow", "Necrovalley", "Gravekeepers"],
     "image": "tearlaments.jpg",
@@ -100,10 +100,10 @@
   },
   "Floowandereeze": {
     "type": "Control",
-    "tier": "Tier 2",
+    "tier": "Rogue",
     "difficulty": 1,
     "weaknesses": ["Maxx 'C'", "Droll & Lock Bird", "Ash Blossom"],
-    "image": "floowandereeze.jpg",
+    "image": "Floowandereeze.jpg",
     "description": "Deck que utiliza invocaciones normales múltiples para controlar el campo.",
     "archetype": "Floowandereeze",
     "recommended_size": "40 cartas",
@@ -111,7 +111,7 @@
   },
   "Marincess": {
     "type": "Combo",
-    "tier": "Tier 2",
+    "tier": "Rogue",
     "difficulty": 5,
     "weaknesses": ["Kaijus", "Sphere Mode", "Dark Ruler No More"],
     "image": "marincess.jpg",
@@ -133,7 +133,7 @@
   },
   "Dark Magician": {
     "type": "Control",
-    "tier": "Tier 3",
+    "tier": "Fun",
     "difficulty": 5,
     "weaknesses": ["Backrow removal", "Spell negation", "Grave disruption"],
     "image": "dark-magician.jpg",
@@ -144,7 +144,7 @@
   },
   "Spright": {
     "type": "Combo",
-    "tier": "Tier 1",
+    "tier": "Rogue",
     "difficulty": 7,
     "weaknesses": ["Nibiru", "Droll & Lock Bird", "Skill Drain"],
     "image": "spright.jpg",
@@ -153,9 +153,42 @@
     "recommended_size": "40-42 cartas",
     "extra_deck": "15 cartas"
   },
+  "Maliss": {
+    "type": "Combo",
+    "tier": "Tier 3",
+    "difficulty": 7,
+    "weaknesses": ["Alta dependecia del banish.", "Droll & Lock Bird", "Skill Drain"],
+    "image": "maliss.jpg",
+    "description": "Deck de nivel/link 3 que genera rápidamente tableros de interacción.",
+    "archetype": "Maliss",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Artmage": {
+    "type": "Combo",
+    "tier": "Tier 3",
+    "difficulty": 7,
+    "weaknesses": ["Alta dependecia del banish.", "Droll & Lock Bird", "Skill Drain"],
+    "image": "artmage.jpg",
+    "description": "Deck de fusión que puede jugar con sus cartas de main deck.",
+    "archetype": "Artmage",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
+  "Memento": {
+    "type": "Combo",
+    "tier": "Tier 3",
+    "difficulty": 7,
+    "weaknesses": ["Alta dependecia del cementerio.", "Droll & Lock Bird", "Skill Drain"],
+    "image": "memento.jpg",
+    "description": "Deck de fusión que puede jugar con sus cartas de main deck.",
+    "archetype": "Memento",
+    "recommended_size": "40-42 cartas",
+    "extra_deck": "15 cartas"
+  },
   "Labrynth": {
     "type": "Control",
-    "tier": "Tier 2",
+    "tier": "Rogue",
     "difficulty": 6,
     "weaknesses": ["Backrow removal", "Royal Decree", "Evenly Matched"],
     "image": "labrynth.jpg",

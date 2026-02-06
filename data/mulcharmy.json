@@ -1,0 +1,27 @@
+{
+  "Dragon Link": {
+    "Mulcharmy Meowls": "Low",
+    "Mulcharmy Purulia": "Medium",
+    "Mulcharmy Fuwalos": "High"
+  },
+  "Dracotail": {
+    "Mulcharmy Meowls": "Low",
+    "Mulcharmy Purulia": "Low",
+    "Mulcharmy Fuwalos": "Medium"
+  },
+  "Tearlaments": {
+    "Mulcharmy Meowls": "High",
+    "Mulcharmy Purulia": "Very High",
+    "Mulcharmy Fuwalos": "Lethal"
+  },
+  "Branded Despia": {
+    "Mulcharmy Meowls": "Medium",
+    "Mulcharmy Purulia": "High",
+    "Mulcharmy Fuwalos": "Very High"
+  },
+  "Spright": {
+    "Mulcharmy Meowls": "High",
+    "Mulcharmy Purulia": "Very High",
+    "Mulcharmy Fuwalos": "Lethal"
+  }
+}

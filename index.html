@@ -77,7 +77,7 @@
                     </div>
                 </section>
                 
-                <!-- Buscar Deck (Completo) -->
+                <!-- Buscar Deck (Completo) - CON PAGINACIÓN -->
                 <section id="search-complete" class="view-section">
                     <div class="view-header">
                         <h2>Buscar Deck (Vista Completa)</h2>
@@ -85,16 +85,53 @@
                     
                     <div class="search-container">
                         <div class="search-box">
-                            <input type="text" class="search-input" id="complete-search-input" placeholder="Escribe el nombre del deck...">
+                            <input type="text" class="search-input" id="complete-search-input" 
+                                placeholder="Escribe el nombre del deck...">
                             <div class="autocomplete-dropdown" id="complete-autocomplete"></div>
-                            <button class="search-btn" id="complete-search-btn">Buscar</button>
+                            <button class="search-btn" id="complete-search-btn">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
                         </div>
                     </div>
                     
+                    <!-- Pestañas de navegación -->
+                    <div class="pagination-tabs" id="complete-pagination-tabs">
+                        <div class="pagination-tabs-container">
+                            <button class="pagination-tab active" data-tab="1">
+                                <i class="fas fa-home"></i> Resumen
+                            </button>
+                            <button class="pagination-tab" data-tab="2">
+                                <i class="fas fa-shield-alt"></i> Meta Vulnerability
+                            </button>
+                            <button class="pagination-tab" data-tab="3">
+                                <i class="fas fa-cat"></i> Mulcharmy Analysis
+                            </button>
+                            <button class="pagination-tab" data-tab="4">
+                                <i class="fas fa-chess-board"></i> Endboard
+                            </button>
+                            <button class="pagination-tab" data-tab="5">
+                                <i class="fas fa-info-circle"></i> Información
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenedor principal con paginación -->
                     <div id="complete-deck-result" class="scrollable-content">
-                        <div class="empty-state">
-                            <i class="fas fa-list-alt"></i>
-                            <p>Escribe el nombre de un deck para ver información detallada.</p>
+                        <div class="pagination-content">
+                            <!-- Las secciones se cargarán aquí dinámicamente -->
+                        </div>
+                        
+                        <!-- Navegación de páginas -->
+                        <div class="pagination-navigation" style="display: none;">
+                            <button class="pagination-btn" id="prev-page">
+                                <i class="fas fa-chevron-left"></i> Anterior
+                            </button>
+                            <div class="pagination-info">
+                                <span id="current-page">1</span> de <span id="total-pages">1</span>
+                            </div>
+                            <button class="pagination-btn" id="next-page">
+                                Siguiente <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -109,6 +146,8 @@
                                 <option value="1">Tier 1</option>
                                 <option value="2">Tier 2</option>
                                 <option value="3">Tier 3</option>
+                                <option value="rogue">Rogue</option>
+                                <option value="fun">Fun</option>
                             </select>
                             <button id="meta-sort-tier" class="action-btn">
                                 <i class="fas fa-sort-amount-down"></i> Ordenar por Tier
@@ -481,6 +520,13 @@
     <script src="js/theme-manager.js"></script>
     <script src="js/search-autocomplete.js"></script>
     <script src="js/deck-renderer.js"></script>
+    <script src="js/modules/pagination.js"></script>
+    <script src="js/modules/deck-views.js"></script>
+    <script src="js/modules/meta-analysis.js"></script>
+    <script src="js/modules/comparison.js"></script>
+    <script src="js/modules/side-deck.js"></script>
+    <script src="js/modules/handtraps.js"></script>
+    <script src="js/modules/utilities.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
