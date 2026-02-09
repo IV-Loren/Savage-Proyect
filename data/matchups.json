@@ -12,6 +12,16 @@
     "matchups": {
     }
   },
+  "K9 ": {
+    "side_in": ["D.D. Crow", "Necrovalley", "Gravekeepers", "Ash Blossom", "Dimension Shifter"],
+    "matchups": {
+    }
+  },
+  "K9": {
+    "side_in": ["D.D. Crow", "Necrovalley", "Gravekeepers", "Ash Blossom", "Dimension Shifter"],
+    "matchups": {
+    }
+  },
   "Branded Despia": {
     "side_in": ["Dimensional Barrier", "Anti-Spell Fragrance", "Artifact Lancea", "D.D. Crow"],
     "matchups": {
@@ -51,7 +61,62 @@
     "side_in": ["Artifact Lancea", "Droll & Lock Bird"],
     "matchups": {
     }
+  },
+  "Orcust": {
+    "side_in": ["Artifact Lancea", "Droll & Lock Bird", "Ghost Belle & Haunted Mansion", "D.D. Crow"],
+    "matchups": {
+    }
+  }, 
+  "Fire King": {
+    "side_in": ["Dimension Shifter", "Droll & Lock Bird", "D.D. Crow", "Ghost Belle & Haunted Mansion"],
+    "matchups": {
+    }
+  },
+  "Radiant Typhoon": {
+    "side_in": ["Spell Canceller", "Anti-Spell Fragrance", "Ghost Mourner & Moonlit Chill", "Ghost Belle & Haunted Mansion"],
+    "matchups": {
+    }
+  }, 
+  "Hero": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
   },  
+  "Crystron": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
+  "Shark": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
+  "Vanquish Soul": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
+  "Mitsurugi": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
+  "Lunalight": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
+  "Exosister": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
+  "D/D/D": {
+    "side_in": ["Dark Ruler No More", "Raigeki", "Droll & Lock Bird", "Ash Blossom"],
+    "matchups": {
+    }
+  },
   "Labrynth": {
     "side_in": ["Backrow removal", "Royal Decree", "Evenly Matched", "Cosmic Cyclone"],
     "matchups": {

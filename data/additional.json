@@ -50,6 +50,23 @@
       "..."
     ]
   },
+  "K9 Vanquish Soul": {
+    "engine": "XYZ",
+    "going": {"first": 4, "second": 4},
+    "stats": {
+      "attack": 9, "control": 8, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 9
+    },
+    "additional": {
+      "draw": 2, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 4
+    },
+    "tips": [
+      "Recuerda que el efecto de snatchy es una vez por CADENA.",
+      "Usa muy bien los efectos de los links.",
+      "..."
+    ]
+  },
   "K9": {
     "engine": "XYZ",
     "going": {"first": 4, "second": 4},
@@ -277,6 +294,227 @@
     "stats": {
       "attack": 8, "control": 8, "consistency": 9, 
       "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Orcust": {
+    "engine": "Link Combo",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Fire King": {
+    "engine": "Combo",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Radiant Typhoon": {
+    "engine": "Combo",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Blue Eyes": {
+    "engine": "Control",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Snake Eyes": {
+    "engine": "Control",
+    "going": {"first": 4, "second": 3},
+    "stats": {
+      "attack": 8, "control": 8, "consistency": 9, 
+      "board_break": 7, "versatility": 8, "resilience": 7, "recovery": 6
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Hero": {
+    "engine": "Combo",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Crystron": {
+    "engine": "Combo",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Shark": {
+    "engine": "XYZ",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Vanquish Soul": {
+    "engine": "XYZ",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Mitsurugi": {
+    "engine": "XYZ",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Lunalight": {
+    "engine": "XYZ",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "Exosister": {
+    "engine": "XYZ",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
+    },
+    "additional": {
+      "draw": 4, "control": 5, "search": 5, "burn": 2,
+      "beatdown": 5, "stamina": 4, "comeback": 4, "swarm": 5
+    },
+    "tips": [
+      "Aprende las líneas de combo con Gigantic Spright",
+      "Usa Spright Starter para extender",
+      "No olvides los efectos de búsqueda de Jet y Carrot"
+    ]
+  },
+  "D/D/D": {
+    "engine": "XYZ",
+    "going": {"first": 5, "second": 3},
+    "stats": {
+      "attack": 10, "control": 9, "consistency": 10, 
+      "board_break": 8, "versatility": 9, "resilience": 8, "recovery": 7
     },
     "additional": {
       "draw": 4, "control": 5, "search": 5, "burn": 2,

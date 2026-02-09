@@ -661,18 +661,52 @@ function renderMVSPage(deckName, container) {
                     <table class="mvs-table">
                         <thead>
                             <tr>
-                                <th style="width: 25%;">Carta</th>
-                                <th style="width: 20%;">Nivel</th>
-                                <th style="width: 30%;">Impacto</th>
-                                <th style="width: 25%;">Descripción</th>
+                                <th style="width: 20%;">Carta</th>
+                                <th style="width: 15%;">Nivel</th>
+                                <th style="width: 20%;">Impacto</th>
+                                <th style="width: 30%;">Golpes Claves</th>
+                                <th style="width: 15%;">Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
     `;
     
     cards.forEach(card => {
-        const level = mvs[card] || 'Low';
+        const cardData = mvs[card];
+        let level, counterCards;
+        
+        // Manejar tanto el formato antiguo como el nuevo
+        if (cardData && typeof cardData === 'object' && cardData.level) {
+            level = cardData.level;
+            counterCards = cardData.counter_cards || [];
+        } else {
+            level = cardData || 'Low';
+            counterCards = [];
+        }
+        
         const config = levelConfig[level] || levelConfig['Low'];
+        
+        // Generar HTML para los golpes clave
+        let counterHTML = '';
+        if (counterCards && counterCards.length > 0) {
+            counterHTML = `
+                <div class="counter-cards-container">
+                    ${counterCards.map(counterCard => `
+                        <div class="counter-card-chip">
+                            <i class="fas fa-shield-check" style="color: var(--accent-green); margin-right: 5px;"></i>
+                            ${counterCard}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        } else {
+            counterHTML = `
+                <div style="color: var(--text-secondary); font-size: 0.85rem; font-style: italic;">
+                    <i class="fas fa-info-circle" style="margin-right: 5px;"></i>
+                    Basado en matchup
+                </div>
+            `;
+        }
         
         content += `
             <tr>
@@ -695,6 +729,9 @@ function renderMVSPage(deckName, container) {
                             background-color: ${getVulnerabilityColor(level)}"></div>
                     </div>
                 </td>
+                <td>
+                    ${counterHTML}
+                </td>
                 <td style="color: var(--text-secondary); font-size: 0.9rem;">
                     ${config.desc}
                 </td>
@@ -714,12 +751,50 @@ function renderMVSPage(deckName, container) {
                     <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 10px;">
                         ${generateMVSAnalysis(deckName, mvs)}
                     </p>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: var(--bg-card); border-radius: 10px; border-left: 4px solid var(--accent-green);">
+                        <h5 style="color: var(--accent-green); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-tips"></i> Golpes Claves
+                        </h5>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                            Un Golpe Clave con handtraps es usar tu interrupción en el punto exacto de la partida 
+                            donde se genere el mayor daño posible al deck rival. 
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     `;
     
     container.innerHTML = content;
+    
+    // Añadir estilos inline para las contramedidas si no están en el CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .counter-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .counter-card-chip {
+            padding: 6px 10px;
+            background-color: rgba(112, 216, 112, 0.1);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            border: 1px solid rgba(112, 216, 112, 0.3);
+            display: flex;
+            align-items: center;
+        }
+        
+        .counter-card-chip:hover {
+            background-color: rgba(112, 216, 112, 0.2);
+            transform: translateX(3px);
+            transition: all 0.2s ease;
+        }
+    `;
+    container.appendChild(style);
 }
 
 // Página 3: Mulcharmy Analysis
@@ -1061,7 +1136,6 @@ function renderArchetypePage(deckName, container) {
 // FUNCIONES AUXILIARES PARA ANÁLISIS
 // ============================================
 
-// Funciones para análisis MVS
 function calculateOverallVulnerability(mvs) {
     const levels = {
         'Counterproductive': 10,
@@ -1075,7 +1149,16 @@ function calculateOverallVulnerability(mvs) {
     const values = Object.values(mvs);
     if (values.length === 0) return 'N/A';
     
-    const total = values.reduce((sum, level) => sum + (levels[level] || 50), 0);
+    const total = values.reduce((sum, cardData) => {
+        let level;
+        if (typeof cardData === 'object' && cardData.level) {
+            level = cardData.level;
+        } else {
+            level = cardData;
+        }
+        return sum + (levels[level] || 50);
+    }, 0);
+    
     const avg = Math.round(total / values.length);
     
     if (avg >= 80) return 'Alta';
@@ -1122,13 +1205,52 @@ function getVulnerabilityColorByScore(score) {
 }
 
 function generateMVSAnalysis(deckName, mvs) {
-    const lethal = Object.entries(mvs).filter(([card, level]) => level === 'Lethal');
-    const high = Object.entries(mvs).filter(([card, level]) => level === 'High');
+    const lethal = Object.entries(mvs).filter(([card, data]) => {
+        let level;
+        if (typeof data === 'object' && data.level) {
+            level = data.level;
+        } else {
+            level = data;
+        }
+        return level === 'Lethal';
+    });
+    
+    const high = Object.entries(mvs).filter(([card, data]) => {
+        let level;
+        if (typeof data === 'object' && data.level) {
+            level = data.level;
+        } else {
+            level = data;
+        }
+        return level === 'High';
+    });
     
     if (lethal.length > 0) {
-        return `${deckName} es extremadamente vulnerable a: ${lethal.map(([card]) => card).join(', ')}. Estas cartas pueden detener completamente el deck.`;
+        const lethalCards = lethal.map(([card]) => card).join(', ');
+        const counterCards = lethal
+            .filter(([card, data]) => data.counter_cards && data.counter_cards.length > 0)
+            .flatMap(([card, data]) => data.counter_cards)
+            .slice(0, 3);
+        
+        let counterText = '';
+        if (counterCards.length > 0) {
+            counterText = ` Considera sideckear: ${counterCards.join(', ')} para contrarrestar estas amenazas.`;
+        }
+        
+        return `${deckName} es extremadamente vulnerable a: ${lethalCards}. Estas cartas pueden detener completamente el deck.${counterText}`;
     } else if (high.length > 0) {
-        return `${deckName} tiene vulnerabilidades significativas contra: ${high.map(([card]) => card).join(', ')}. Considera sideckear protección contra estas cartas.`;
+        const highCards = high.map(([card]) => card).join(', ');
+        const counterCards = high
+            .filter(([card, data]) => data.counter_cards && data.counter_cards.length > 0)
+            .flatMap(([card, data]) => data.counter_cards)
+            .slice(0, 3);
+        
+        let counterText = '';
+        if (counterCards.length > 0) {
+            counterText = ` Cartas recomendadas para side deck: ${counterCards.join(', ')}.`;
+        }
+        
+        return `${deckName} tiene vulnerabilidades significativas contra: ${highCards}. Considera sideckear protección contra estas cartas.${counterText}`;
     } else {
         return `${deckName} tiene un perfil de vulnerabilidad equilibrado. No tiene debilidades críticas, pero varias cartas pueden molestar su juego.`;
     }

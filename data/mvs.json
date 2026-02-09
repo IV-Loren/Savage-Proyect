@@ -1,27 +1,339 @@
 {
   "Dragon Link": {
-    "Ash Blossom": "Medium",
-    "Droll & Lock Bird": "High",
-    "Nibiru": "High",
-    "Infinite Impermanence": "Medium",
-    "Ghost Belle": "Low",
-    "Bystials": "High",
-    "Dark Ruler No More": "Lethal",
-    "Forbidden Droplet": "High",
-    "Super Polymerization": "Low",
-    "Ghost Ogre": "Low"
+    "Ash Blossom": {
+      "level": "Low",
+      "counter_cards": ["Striker dragon", "---"]
+    },
+    "Droll & Lock Bird": {
+      "level": "High",
+      "counter_cards": ["Called by the Grave", "Ash Blossom", "Crossout Designator"]
+    },
+    "Nibiru": {
+      "level": "High",
+      "counter_cards": ["Called by the Grave", "Crossout Designator", "Nibiru, the Primal Being"]
+    },
+    "Infinite Impermanence": {
+      "level": "Medium",
+      "counter_cards": ["Called by the Grave", "Crossout Designator", "Forbidden Chalice"]
+    },
+    "Ghost Belle": {
+      "level": "Low",
+      "counter_cards": ["Called by the Grave", "Crossout Designator", "Ghost Belle & Haunted Mansion"]
+    },
+    "Bystials": {
+      "level": "High",
+      "counter_cards": ["Called by the Grave", "D.D. Crow", "Bystial Magnamhut"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["Solemn Judgment", "Red Reboot", "Royal Decree"]
+    },
+    "Forbidden Droplet": {
+      "level": "High",
+      "counter_cards": ["Solemn Judgment", "Red Reboot", "Royal Decree"]
+    },
+    "Super Polymerization": {
+      "level": "High",
+      "counter_cards": ["Called by the Grave", "Ash Blossom", "Ghost Belle"]
+    },
+    "Ghost Ogre": {
+      "level": "Low",
+      "counter_cards": ["Called by the Grave", "Crossout Designator", "Ghost Ogre & Snow Rabbit"]
+    }
   },
   "Dracotail": {
-    "Ash Blossom": "Low",
-    "Droll & Lock Bird": "High",
-    "Nibiru": "Medium",
-    "Infinite Impermanence": "Low",
-    "Ghost Belle": "Nulo",
-    "Bystials": "Medium",
-    "Dark Ruler No More": "High",
-    "Forbidden Droplet": "Medium",
-    "Super Polymerization": "Low",
-    "Ghost Ogre": "Low"
+    "Ash Blossom": {
+      "level": "Medium",
+      "counter_cards": ["Rahu dracotail", "Dracotail Lukias", "Ketu Dracotail"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Low",
+      "counter_cards": ["Dracotail Lukias", "Ketu Dracotail"]
+    },
+    "Nibiru": {
+      "level": "Nulo",
+      "counter_cards": ["Después de ..."]
+    },
+    "Infinite Impermanence": {
+      "level": "Medium",
+      "counter_cards": ["Dracotail Arthalion", "Dracotail Lukias"]
+    },
+    "Ghost Belle": {
+      "level": "High",
+      "counter_cards": ["Dracotail traps", "Dracotail Arthalion"]
+    },
+    "Bystials": {
+      "level": "Low",
+      "counter_cards": ["Dracotail Mululu"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["..."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Dracotail Gulamel", "Hieratic Seal of the Heavenly Spheres"]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Ghost Ogre": {
+      "level": "Nulo",
+      "counter_cards": ["No hay targets comunes para esta carta."]
+    }
+  },
+  "Yummy": {
+    "Ash Blossom": {
+      "level": "Medium",
+      "counter_cards": ["Cupsy★Yummy Way", "Cupsy☆Yummy"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Medium",
+      "counter_cards": ["Pre-Cupsy☆Yummy"]
+    },
+    "Nibiru": {
+      "level": "Medium",
+      "counter_cards": ["Después de ..."]
+    },
+    "Infinite Impermanence": {
+      "level": "High",
+      "counter_cards": ["Yummy★Snatchy", "Cupsy★Yummy Way"]
+    },
+    "Ghost Belle": {
+      "level": "High",
+      "counter_cards": ["Yummy Synchros", "Yummy☆Surprise"]
+    },
+    "Bystials": {
+      "level": "Low",
+      "counter_cards": ["Yummy★Snatchy", "Yummy Synchros"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["..."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Yummy★Snatchy", "Yummy Synchros"]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Ghost Ogre": {
+      "level": "Nulo",
+      "counter_cards": ["Yummyusment☆Mignon", "Yummy★Snatchy"]
+    }
+  },
+  "K9": {
+    "Ash Blossom": {
+      "level": "Medium",
+      "counter_cards": ["Cupsy★Yummy Way", "Cupsy☆Yummy"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Medium",
+      "counter_cards": ["Pre-Cupsy☆Yummy"]
+    },
+    "Nibiru": {
+      "level": "Medium",
+      "counter_cards": ["Después de ..."]
+    },
+    "Infinite Impermanence": {
+      "level": "High",
+      "counter_cards": ["Yummy★Snatchy", "Cupsy★Yummy Way"]
+    },
+    "Ghost Belle": {
+      "level": "High",
+      "counter_cards": ["Yummy☆Surprise", "Yummy Synchros"]
+    },
+    "Bystials": {
+      "level": "Low",
+      "counter_cards": ["Yummy★Snatchy", "Yummy Synchros"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["..."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Yummy★Snatchy", "Yummy Synchros"]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Ghost Ogre": {
+      "level": "Nulo",
+      "counter_cards": ["Yummyusment☆Mignon", "Yummy★Snatchy"]
+    }
+  },
+  "Kewl Tune": {
+    "Ash Blossom": {
+      "level": "High",
+      "counter_cards": ["Kewl Tune Cue", "Kewl Tune Synchro"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Medium",
+      "counter_cards": ["Lo más temprano posible"]
+    },
+    "Nibiru": {
+      "level": "High",
+      "counter_cards": ["Después de ..."]
+    },
+    "Infinite Impermanence": {
+      "level": "High",
+      "counter_cards": ["Kewl Tune Cue"]
+    },
+    "Ghost Belle": {
+      "level": "Low",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Bystials": {
+      "level": "Low",
+      "counter_cards": ["Kewl Tune Cue"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Proximamente..."]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["Proximamente..."]
+    },
+    "Ghost Ogre": {
+      "level": "Nulo",
+      "counter_cards": ["Proximamente..."]
+    }
+  },
+  "Hecahands": {
+    "Ash Blossom": {
+      "level": "Medium",
+      "counter_cards": ["Hecahands Ibtel", "Nightmare Apprentice", "The Hidden Hecahands"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Medium",
+      "counter_cards": ["Lo más temprano posible"]
+    },
+    "Nibiru": {
+      "level": "Low",
+      "counter_cards": ["Después de ..."]
+    },
+    "Infinite Impermanence": {
+      "level": "High",
+      "counter_cards": ["Hecahands Xeno", "Hecahands Ibtel"]
+    },
+    "Ghost Belle": {
+      "level": "Low",
+      "counter_cards": ["Hecahands Jauzah"]
+    },
+    "Bystials": {
+      "level": "Low",
+      "counter_cards": ["Kewl Tune Cue"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Proximamente..."]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["Proximamente..."]
+    },
+    "Ghost Ogre": {
+      "level": "Nulo",
+      "counter_cards": ["Proximamente..."]
+    }
+  },
+  "Branded Despia": {
+    "Ash Blossom": {
+      "level": "Medium",
+      "counter_cards": ["Branded Fusion"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Medium",
+      "counter_cards": ["Lo más temprano posible"]
+    },
+    "Nibiru": {
+      "level": "High",
+      "counter_cards": ["Después de ..."]
+    },
+    "Infinite Impermanence": {
+      "level": "High",
+      "counter_cards": ["Fallen of the White Dragon", "Aluber the Jester of Despia"]
+    },
+    "Ghost Belle": {
+      "level": "Medium",
+      "counter_cards": ["Ecclesia and the Dark Dragon"]
+    },
+    "Bystials": {
+      "level": "High",
+      "counter_cards": ["Granguignol the Dusk Dragon"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Proximamente..."]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["Proximamente..."]
+    },
+    "Ghost Ogre": {
+      "level": "Nulo",
+      "counter_cards": ["Proximamente..."]
+    }
+  },
+  "Floowandereeze": {
+    "Ash Blossom": {
+      "level": "High",
+      "counter_cards": ["Floowandereeze & Robina", "Floowandereeze & Eglen", "Floowandereeze and the Advent of Adventure"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Medium",
+      "counter_cards": ["Floowandereeze & Robina"]
+    },
+    "Nibiru": {
+      "level": "Nulo",
+      "counter_cards": ["En circunstancias normales, no se puede activar. Sin embargo, si tu oponente ha invocado múltiples veces, podrías considerar activarla después de la última invocación."]
+    },
+    "Infinite Impermanence": {
+      "level": "High",
+      "counter_cards": ["Floowandereeze & Robina", "Floowandereeze & Eglen"]
+    },
+    "Ghost Belle": {
+      "level": "Low",
+      "counter_cards": ["Floowandereeze & Stri"]
+    },
+    "Bystials": {
+      "level": "Nulo",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["No targetea."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Floowandereeze & Empen"]
+    },
+    "Super Polymerization": {
+      "level": "Nulo",
+      "counter_cards": ["No hay targets válidos para esta carta."]
+    },
+    "Ghost Ogre": {
+      "level": "Medium",
+      "counter_cards": ["Floowandereeze and the Magnificent Map"]
+    }
   },
   "Tearlaments": {
     "Ash Blossom": "High",
@@ -35,7 +347,7 @@
     "Super Polymerization": "High",
     "Ghost Ogre": "Medium"
   },
-  "Branded Despia": {
+  "Vanquish Soul": {
     "Ash Blossom": "High",
     "Droll & Lock Bird": "Low",
     "Nibiru": "Low",
@@ -46,6 +358,126 @@
     "Forbidden Droplet": "High",
     "Super Polymerization": "High",
     "Ghost Ogre": "Low"
+  },
+  "Mitsurugi": {
+    "Ash Blossom": "High",
+    "Droll & Lock Bird": "Low",
+    "Nibiru": "Low",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "Medium",
+    "Bystials": "High",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "High",
+    "Super Polymerization": "High",
+    "Ghost Ogre": "Low"
+  },
+  "Lunalight": {
+    "Ash Blossom": "High",
+    "Droll & Lock Bird": "Low",
+    "Nibiru": "Low",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "Medium",
+    "Bystials": "High",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "High",
+    "Super Polymerization": "High",
+    "Ghost Ogre": "Low"
+  },
+  "Exosister": {
+    "Ash Blossom": "High",
+    "Droll & Lock Bird": "Low",
+    "Nibiru": "Low",
+    "Infinite Impermanence": "Medium",
+    "Ghost Belle": "Medium",
+    "Bystials": "High",
+    "Dark Ruler No More": "High",
+    "Forbidden Droplet": "High",
+    "Super Polymerization": "High",
+    "Ghost Ogre": "Low"
+  },
+  "D/D/D": {
+    "Ash Blossom": {
+      "level": "Medium",
+      "counter_cards": ["Dark Contract with the Zero King", "D/D Savant Copernicus", "D/D Savant Kepler"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Low",
+      "counter_cards": ["Lo más temprano posible"]
+    },
+    "Nibiru": {
+      "level": "Low",
+      "counter_cards": ["Antes de D/D/D Sky King Zeus Ragnarok"]
+    },
+    "Infinite Impermanence": {
+      "level": "Medium",
+      "counter_cards": ["D/D Savant Copernicus", "D/D Savant Kepler"]
+    },
+    "Ghost Belle": {
+      "level": "Medium",
+      "counter_cards": ["D/D Necro Slime", "Ghost Belle & Haunted Mansion"]
+    },
+    "Bystials": {
+      "level": "Low",
+      "counter_cards": ["D/D Necro Slime", "D/D Lance Soldier"]
+    },
+    "Dark Ruler No More": {
+      "level": "High",
+      "counter_cards": ["No targetea."]
+    },
+    "Forbidden Droplet": {
+      "level": "High",
+      "counter_cards": ["D/D/D Wave High King Caesar", "D/D/D Deviser King Deus Machinex", "D/D/D Cursed King Siegfried", "D/D/D Sky King Zeus Ragnarok"]
+    },
+    "Super Polymerization": {
+      "level": "High",
+      "counter_cards": ["D/D/D Deviser King Deus Machinex", "D/D/D Cursed King Siegfried", "D/D/D Sky King Zeus Ragnarok"]
+    },
+    "Ghost Ogre": {
+      "level": "Low",
+      "counter_cards": ["Dark Contract with the Zero King", "Dark Contract with the Gate"]
+    }
+  },
+  "Maliss": {
+    "Ash Blossom": {
+      "level": "Low",
+      "counter_cards": ["Maliss Q Red Ransom", "Maliss P Chessy Cat", "Maliss C MTP-07"]
+    },
+    "Droll & Lock Bird": {
+      "level": "Low",
+      "counter_cards": ["Lo más temprano posible"]
+    },
+    "Nibiru": {
+      "level": "Low",
+      "counter_cards": ["Antes de Cyberse Wicckid"]
+    },
+    "Infinite Impermanence": {
+      "level": "Medium",
+      "counter_cards": ["Maliss P Doormouse", "D/D Savant Kepler"]
+    },
+    "Ghost Belle": {
+      "level": "Medium",
+      "counter_cards": ["D/D Necro Slime", "Ghost Belle & Haunted Mansion"]
+    },
+    "Bystials": {
+      "level": "Medium",
+      "counter_cards": ["Después de que use el efecto de Maliss Q Red Ransom para revivir, usa bystial para que no pueda volver por efecto de Allied Code Talker @Ignister."]
+    },
+    "Dark Ruler No More": {
+      "level": "Medium",
+      "counter_cards": ["No targetea."]
+    },
+    "Forbidden Droplet": {
+      "level": "Medium",
+      "counter_cards": ["Allied Code Talker @Ignister", "Maliss Q Hearts Crypter", "Maliss Q Red Ransom"]
+    },
+    "Super Polymerization": {
+      "level": "High",
+      "counter_cards": ["Allied Code Talker @Ignister", "Maliss Q Hearts Crypter"]
+    },
+    "Ghost Ogre": {
+      "level": "Medium",
+      "counter_cards": ["Maliss Q Red Ransom"]
+    }
   },
   "Spright": {
     "Ash Blossom": "Medium",

@@ -3591,3 +3591,58 @@ footer p {
     }
 }
 
+/* ============================================
+   ESTILOS PARA LA NUEVA COLUMNA DE CONTRAMEDIDAS
+   ============================================ */
+
+.counter-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.counter-card-chip {
+    padding: 6px 10px;
+    background-color: rgba(112, 216, 112, 0.1);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--accent-green);
+    border: 1px solid rgba(112, 216, 112, 0.3);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.counter-card-chip:hover {
+    background-color: rgba(112, 216, 112, 0.2);
+    transform: translateX(3px);
+}
+
+/* Ajustar la tabla para la nueva columna */
+.mvs-table th:nth-child(4),
+.mvs-table td:nth-child(4) {
+    width: 30%;
+    min-width: 200px;
+}
+
+/* Responsive para la nueva columna */
+@media (max-width: 1024px) {
+    .mvs-table th:nth-child(4),
+    .mvs-table td:nth-child(4) {
+        width: 25%;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mvs-table th:nth-child(4),
+    .mvs-table td:nth-child(4) {
+        width: 20%;
+        min-width: 120px;
+    }
+    
+    .counter-card-chip {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+}
